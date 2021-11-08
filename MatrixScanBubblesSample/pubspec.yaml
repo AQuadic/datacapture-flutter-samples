@@ -3,7 +3,7 @@ description: Demonstrates the use of more advanced augmented reality use cases w
 
 publish_to: 'none'
 
-version: 1.0.0
+version: 5.0.0
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

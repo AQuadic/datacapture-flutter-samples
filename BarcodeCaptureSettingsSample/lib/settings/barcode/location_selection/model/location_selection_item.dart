@@ -12,7 +12,8 @@ extension LocationSelectionTypePrettyPrint on LocationSelectionType {
       case LocationSelectionType.rectangular:
         return 'Rectangular';
       default:
-        throw Exception("Missing pretty name for '$this' location sekection type");
+        throw Exception(
+            "Missing pretty name for '$this' location sekection type");
     }
   }
 }

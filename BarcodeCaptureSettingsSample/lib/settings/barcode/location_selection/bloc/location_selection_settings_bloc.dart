@@ -19,7 +19,8 @@ class LocationSelectionSettingsBloc extends Bloc {
   LocationSelectionSettingsBloc() {
     if (_settings.currentLocationSelection is RadiusLocationSelection) {
       _currentLocationSelectionType = LocationSelectionType.radius;
-    } else if (_settings.currentLocationSelection is RectangularLocationSelection) {
+    } else if (_settings.currentLocationSelection
+        is RectangularLocationSelection) {
       _currentLocationSelectionType = LocationSelectionType.rectangular;
     } else {
       _currentLocationSelectionType = LocationSelectionType.none;
@@ -29,18 +30,28 @@ class LocationSelectionSettingsBloc extends Bloc {
   void updateLocationSelection() {
     switch (currentLocationSelection) {
       case LocationSelectionType.radius:
-        _settings.currentLocationSelection = RadiusLocationSelection(_settings.radiusLocationSize);
+        _settings.currentLocationSelection =
+            RadiusLocationSelection(_settings.radiusLocationSize);
         break;
       case LocationSelectionType.rectangular:
-        if (_settings.rectangularLocationSelectionSizeMode == SizingMode.widthAndHeight) {
-          _settings.currentLocationSelection = RectangularLocationSelection.withSize(
-              SizeWithUnit(_settings.rectangularLocationSelectionWidth, _settings.rectangularLocationSelectionHeight));
-        } else if (_settings.rectangularLocationSelectionSizeMode == SizingMode.widthAndAspectRatio) {
-          _settings.currentLocationSelection = RectangularLocationSelection.withWidthAndAspect(
-              _settings.rectangularLocationSelectionWidth, _settings.rectangularLocationSelectionHeightAspect);
-        } else if (_settings.rectangularLocationSelectionSizeMode == SizingMode.heightAndAspectRatio) {
-          _settings.currentLocationSelection = RectangularLocationSelection.withHeightAndAspect(
-              _settings.rectangularLocationSelectionHeight, _settings.rectangularLocationSelectionWidthAspect);
+        if (_settings.rectangularLocationSelectionSizeMode ==
+            SizingMode.widthAndHeight) {
+          _settings.currentLocationSelection =
+              RectangularLocationSelection.withSize(SizeWithUnit(
+                  _settings.rectangularLocationSelectionWidth,
+                  _settings.rectangularLocationSelectionHeight));
+        } else if (_settings.rectangularLocationSelectionSizeMode ==
+            SizingMode.widthAndAspectRatio) {
+          _settings.currentLocationSelection =
+              RectangularLocationSelection.withWidthAndAspect(
+                  _settings.rectangularLocationSelectionWidth,
+                  _settings.rectangularLocationSelectionHeightAspect);
+        } else if (_settings.rectangularLocationSelectionSizeMode ==
+            SizingMode.heightAndAspectRatio) {
+          _settings.currentLocationSelection =
+              RectangularLocationSelection.withHeightAndAspect(
+                  _settings.rectangularLocationSelectionHeight,
+                  _settings.rectangularLocationSelectionWidthAspect);
         }
         break;
       case LocationSelectionType.none:
@@ -87,7 +98,8 @@ class LocationSelectionSettingsBloc extends Bloc {
   }
 
   Iterable<SizingMode> get availableRectangularLocationSelectionSizingModes {
-    return SizingMode.values.where((element) => element != SizingMode.shorterDimensionAndAspectRatio);
+    return SizingMode.values.where(
+        (element) => element != SizingMode.shorterDimensionAndAspectRatio);
   }
 
   String get rectangularLocationSelectionWidthDisplayValue {

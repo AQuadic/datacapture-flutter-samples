@@ -18,7 +18,8 @@ class ScanResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<ScanResult> results = ModalRoute.of(context)?.settings.arguments as List<ScanResult>? ?? [];
+    final List<ScanResult> results =
+        ModalRoute.of(context)?.settings.arguments as List<ScanResult>? ?? [];
 
     return PlatformScaffold(
       appBar: PlatformAppBar(
@@ -37,12 +38,14 @@ class ScanResultsScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 20),
                     ),
                     subtitle: PlatformText(
-                      SymbologyDescription.forSymbology(result.symbology).readableName,
+                      SymbologyDescription.forSymbology(result.symbology)
+                          .readableName,
                       style: TextStyle(color: Color(scanditBlue)),
                     ),
                   ));
                 },
-                separatorBuilder: (BuildContext context, int index) => const Divider())),
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider())),
         Container(
           alignment: Alignment.bottomCenter,
           padding: EdgeInsets.all(48.0),
@@ -50,9 +53,11 @@ class ScanResultsScreen extends StatelessWidget {
               width: double.infinity,
               child: PlatformButton(
                   onPressed: () => _scanAgain(context),
-                  material: (_, __) => MaterialRaisedButtonData(textColor: Colors.white),
+                  material: (_, __) =>
+                      MaterialRaisedButtonData(textColor: Colors.white),
                   cupertino: (_, __) => CupertinoButtonData(
-                      color: Color(scanditBlue), borderRadius: BorderRadius.all(Radius.circular(3.0))),
+                      color: Color(scanditBlue),
+                      borderRadius: BorderRadius.all(Radius.circular(3.0))),
                   child: PlatformText(
                     'Scan Again',
                     style: TextStyle(fontSize: 16),

@@ -18,7 +18,8 @@ class GesturesSettingsView extends StatefulWidget {
   }
 }
 
-class _GesturesSettingsViewState extends State<GesturesSettingsView> with WidgetsBindingObserver {
+class _GesturesSettingsViewState extends State<GesturesSettingsView>
+    with WidgetsBindingObserver {
   final GesturesBloc _bloc;
 
   _GesturesSettingsViewState(this._bloc);
@@ -29,7 +30,8 @@ class _GesturesSettingsViewState extends State<GesturesSettingsView> with Widget
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -42,10 +44,12 @@ class _GesturesSettingsViewState extends State<GesturesSettingsView> with Widget
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
                       value: _bloc.isTapToFocusEnabled,
                       title: Text("Tap to Focus"),
                       onChanged: (value) {
@@ -59,10 +63,12 @@ class _GesturesSettingsViewState extends State<GesturesSettingsView> with Widget
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
                       value: _bloc.isSwipeToZoomEnabled,
                       title: Text("Swipe to Zoom"),
                       onChanged: (value) {

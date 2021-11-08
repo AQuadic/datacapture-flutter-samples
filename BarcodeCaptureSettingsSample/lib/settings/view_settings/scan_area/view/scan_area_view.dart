@@ -19,7 +19,8 @@ class ScanAreaSettingsView extends StatefulWidget {
   }
 }
 
-class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with WidgetsBindingObserver {
+class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView>
+    with WidgetsBindingObserver {
   final ScanAreaSettingsBloc _bloc;
   late String topMargin;
   late String bottomMargin;
@@ -44,7 +45,8 @@ class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with Widget
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -59,7 +61,8 @@ class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with Widget
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(children: <Widget>[
                 ListTile(
                   contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
@@ -67,7 +70,10 @@ class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with Widget
                   dense: false,
                   onTap: () => {
                     Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(ScanAreaTopMargin())))
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DoubleWithUnitView(ScanAreaTopMargin())))
                         .then((value) => setState(() {
                               topMargin = _bloc.topMarginDisplayText;
                             }))
@@ -80,7 +86,10 @@ class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with Widget
                   dense: false,
                   onTap: () => {
                     Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(ScanAreaRightMargin())))
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DoubleWithUnitView(ScanAreaRightMargin())))
                         .then((value) => setState(() {
                               rightMargin = _bloc.rightMarginDisplayText;
                             }))
@@ -92,8 +101,11 @@ class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with Widget
                   title: Text("Bottom"),
                   dense: false,
                   onTap: () => {
-                    Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => DoubleWithUnitView(ScanAreaBottomMargin())))
+                    Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DoubleWithUnitView(ScanAreaBottomMargin())))
                         .then((value) => setState(() {
                               bottomMargin = _bloc.bottomMarginDisplayText;
                             }))
@@ -106,7 +118,10 @@ class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with Widget
                   dense: false,
                   onTap: () => {
                     Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(ScanAreaLeftMargin())))
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DoubleWithUnitView(ScanAreaLeftMargin())))
                         .then((value) => setState(() {
                               leftMargin = _bloc.leftMarginDisplayText;
                             }))
@@ -118,7 +133,8 @@ class _ScanAreaSettingsViewState extends State<ScanAreaSettingsView> with Widget
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(children: <Widget>[
                 SwitchListTile(
                   contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),

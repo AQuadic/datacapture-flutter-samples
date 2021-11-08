@@ -20,7 +20,8 @@ class DoubleWithUnitView extends StatefulWidget {
   }
 }
 
-class _DoubleWithUnitViewState extends State<DoubleWithUnitView> with WidgetsBindingObserver {
+class _DoubleWithUnitViewState extends State<DoubleWithUnitView>
+    with WidgetsBindingObserver {
   final DoubleWithUnitBloc _bloc;
   late TextEditingController _valueEditingController;
 
@@ -30,7 +31,8 @@ class _DoubleWithUnitViewState extends State<DoubleWithUnitView> with WidgetsBin
   void initState() {
     super.initState();
 
-    _valueEditingController = TextEditingController(text: _bloc.value.toStringAsFixed(2));
+    _valueEditingController =
+        TextEditingController(text: _bloc.value.toStringAsFixed(2));
     _valueEditingController.addListener(() {
       var newValue = double.tryParse(_valueEditingController.text);
       if (newValue != null) {
@@ -45,7 +47,8 @@ class _DoubleWithUnitViewState extends State<DoubleWithUnitView> with WidgetsBin
       appBar: AppBar(
         title: GestureDetector(
           child: Text(_bloc.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -56,7 +59,8 @@ class _DoubleWithUnitViewState extends State<DoubleWithUnitView> with WidgetsBin
               Card(
                 elevation: 4.0,
                 margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)),
                 child: ListTile(
                   contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
                   title: Text('Value'),
@@ -65,7 +69,8 @@ class _DoubleWithUnitViewState extends State<DoubleWithUnitView> with WidgetsBin
                     width: 100,
                     height: 60,
                     child: TextField(
-                      keyboardType: TextInputType.numberWithOptions(decimal: true),
+                      keyboardType:
+                          TextInputType.numberWithOptions(decimal: true),
                       controller: _valueEditingController,
                       autofocus: true,
                     ),
@@ -88,7 +93,8 @@ class _DoubleWithUnitViewState extends State<DoubleWithUnitView> with WidgetsBin
                   },
                   itemCount: _bloc.availiableMeasureUnits.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return _getSymbologyListItem(_bloc.availiableMeasureUnits.elementAt(index));
+                    return _getSymbologyListItem(
+                        _bloc.availiableMeasureUnits.elementAt(index));
                   },
                 ),
               ),

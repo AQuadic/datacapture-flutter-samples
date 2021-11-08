@@ -54,10 +54,15 @@ class RectangularViewfinderBloc extends Bloc {
 
   List<ColorItem> get availableColors {
     return [
-      ColorItem('Default', _settings.rectangularViewfinderDefaultColor,
-          _settings.rectangularViewfinderColor.value == _settings.rectangularViewfinderDefaultColor.value),
-      ColorItem('Blue', blueColor, _settings.rectangularViewfinderColor.value == blueColor.value),
-      ColorItem('Black', blackColor, _settings.rectangularViewfinderColor.value == blackColor.value),
+      ColorItem(
+          'Default',
+          _settings.rectangularViewfinderDefaultColor,
+          _settings.rectangularViewfinderColor.value ==
+              _settings.rectangularViewfinderDefaultColor.value),
+      ColorItem('Blue', blueColor,
+          _settings.rectangularViewfinderColor.value == blueColor.value),
+      ColorItem('Black', blackColor,
+          _settings.rectangularViewfinderColor.value == blackColor.value),
     ];
   }
 
@@ -160,7 +165,8 @@ class RectangularViewfinderWidthBloc extends DoubleWithUnitBloc {
 
   @override
   set value(double newValue) {
-    _settings.rectangularViewfinderWidth = DoubleWithUnit(newValue, measureUnit);
+    _settings.rectangularViewfinderWidth =
+        DoubleWithUnit(newValue, measureUnit);
   }
 }
 
@@ -186,6 +192,7 @@ class RectangularViewfinderHeightBloc extends DoubleWithUnitBloc {
 
   @override
   set value(double newValue) {
-    _settings.rectangularViewfinderHeight = DoubleWithUnit(newValue, measureUnit);
+    _settings.rectangularViewfinderHeight =
+        DoubleWithUnit(newValue, measureUnit);
   }
 }

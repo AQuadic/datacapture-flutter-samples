@@ -124,12 +124,14 @@ extension RectangularViewfinderStylePrettyPrint on RectangularViewfinderStyle {
       case RectangularViewfinderStyle.square:
         return 'Square';
       default:
-        throw Exception("Missing name for '$this' rectangular viewfinder style");
+        throw Exception(
+            "Missing name for '$this' rectangular viewfinder style");
     }
   }
 }
 
-extension RectangularViewfinderLineStylePrettyPrint on RectangularViewfinderLineStyle {
+extension RectangularViewfinderLineStylePrettyPrint
+    on RectangularViewfinderLineStyle {
   String get name {
     switch (this) {
       case RectangularViewfinderLineStyle.bold:
@@ -137,7 +139,8 @@ extension RectangularViewfinderLineStylePrettyPrint on RectangularViewfinderLine
       case RectangularViewfinderLineStyle.light:
         return 'Light';
       default:
-        throw Exception("Missing name for '$this' rectangular viewfinder line style");
+        throw Exception(
+            "Missing name for '$this' rectangular viewfinder line style");
     }
   }
 }
@@ -164,7 +167,8 @@ extension AnchorPrettyPrint on Anchor {
       case Anchor.topRight:
         return 'Top Right';
       default:
-        throw Exception("Missing name for '$this' rectangular viewfinder line style");
+        throw Exception(
+            "Missing name for '$this' rectangular viewfinder line style");
     }
   }
 }

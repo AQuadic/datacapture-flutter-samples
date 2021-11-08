@@ -21,7 +21,8 @@ class LogoSettingsView extends StatefulWidget {
   }
 }
 
-class _LogoSettingsViewState extends State<LogoSettingsView> with WidgetsBindingObserver {
+class _LogoSettingsViewState extends State<LogoSettingsView>
+    with WidgetsBindingObserver {
   final LogoBloc _bloc;
   late String _offsetXText, _offsetYText;
 
@@ -36,7 +37,8 @@ class _LogoSettingsViewState extends State<LogoSettingsView> with WidgetsBinding
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -47,7 +49,8 @@ class _LogoSettingsViewState extends State<LogoSettingsView> with WidgetsBinding
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: ListTile(
                 contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
                 title: Text("Anchor"),
@@ -63,7 +66,8 @@ class _LogoSettingsViewState extends State<LogoSettingsView> with WidgetsBinding
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(
                 children: <Widget>[
                   ListTile(
@@ -72,7 +76,10 @@ class _LogoSettingsViewState extends State<LogoSettingsView> with WidgetsBinding
                     dense: false,
                     onTap: () => {
                       Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(LogoOffsetXBloc())))
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DoubleWithUnitView(LogoOffsetXBloc())))
                           .then((value) => setState(() {
                                 _offsetXText = _bloc.offsetXDisplayText;
                               }))
@@ -85,7 +92,10 @@ class _LogoSettingsViewState extends State<LogoSettingsView> with WidgetsBinding
                     dense: false,
                     onTap: () => {
                       Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(LogoOffsetYBloc())))
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DoubleWithUnitView(LogoOffsetYBloc())))
                           .then((value) => setState(() {
                                 _offsetYText = _bloc.offsetYDisplayText;
                               }))

@@ -18,7 +18,8 @@ class FeedbackSettingsView extends StatefulWidget {
   }
 }
 
-class _FeedbackSettingsViewState extends State<FeedbackSettingsView> with WidgetsBindingObserver {
+class _FeedbackSettingsViewState extends State<FeedbackSettingsView>
+    with WidgetsBindingObserver {
   final FeedbackSettingsBloc _bloc;
 
   _FeedbackSettingsViewState(this._bloc);
@@ -29,7 +30,8 @@ class _FeedbackSettingsViewState extends State<FeedbackSettingsView> with Widget
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -42,10 +44,12 @@ class _FeedbackSettingsViewState extends State<FeedbackSettingsView> with Widget
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
                       value: _bloc.isSoundOn,
                       title: Text("Sound"),
                       onChanged: (value) {
@@ -59,10 +63,12 @@ class _FeedbackSettingsViewState extends State<FeedbackSettingsView> with Widget
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
                       value: _bloc.isVibrationOn,
                       title: Text("Vibration"),
                       onChanged: (value) {

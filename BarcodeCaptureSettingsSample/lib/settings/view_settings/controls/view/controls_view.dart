@@ -18,7 +18,8 @@ class ControlsSettingsView extends StatefulWidget {
   }
 }
 
-class _ControlsSettingsViewState extends State<ControlsSettingsView> with WidgetsBindingObserver {
+class _ControlsSettingsViewState extends State<ControlsSettingsView>
+    with WidgetsBindingObserver {
   final ControlsBloc _bloc;
 
   _ControlsSettingsViewState(this._bloc);
@@ -29,7 +30,8 @@ class _ControlsSettingsViewState extends State<ControlsSettingsView> with Widget
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(

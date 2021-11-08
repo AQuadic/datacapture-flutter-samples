@@ -22,7 +22,8 @@ abstract class DoubleWithUnitBloc extends Bloc {
   List<MeasureUnitItem> get availiableMeasureUnits {
     return [
       MeasureUnitItem(MeasureUnit.dip, measureUnit == MeasureUnit.dip),
-      MeasureUnitItem(MeasureUnit.fraction, measureUnit == MeasureUnit.fraction),
+      MeasureUnitItem(
+          MeasureUnit.fraction, measureUnit == MeasureUnit.fraction),
       MeasureUnitItem(MeasureUnit.pixel, measureUnit == MeasureUnit.pixel)
     ];
   }

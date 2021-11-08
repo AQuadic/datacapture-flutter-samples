@@ -72,6 +72,7 @@ class CameraSettingsBloc extends Bloc {
   }
 
   Iterable<CameraPosition> get availableCameraPositions {
-    return CameraPosition.values.where((element) => element != CameraPosition.unspecified);
+    return CameraPosition.values
+        .where((element) => element != CameraPosition.unspecified);
   }
 }

@@ -36,7 +36,11 @@ class LaserlineViewfinderSettingsView {
         title: Text("Width"),
         dense: false,
         onTap: () => {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(LaserlineWidthBloc())))
+          Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          DoubleWithUnitView(LaserlineWidthBloc())))
               .then((value) => _setState(() {
                     widthText = _bloc.widthDisplayText;
                   }))

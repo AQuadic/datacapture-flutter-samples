@@ -23,7 +23,8 @@ class MatrixScanScreen extends StatefulWidget {
 
   // Create data capture context using your license key.
   @override
-  _MatrixScanScreenState createState() => _MatrixScanScreenState(DataCaptureContext.forLicenseKey(licenseKey));
+  _MatrixScanScreenState createState() =>
+      _MatrixScanScreenState(DataCaptureContext.forLicenseKey(licenseKey));
 }
 
 class _MatrixScanScreenState extends State<MatrixScanScreen>
@@ -49,7 +50,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
     Permission.camera.request().isGranted.then((value) => setState(() {
           _isPermissionMessageVisible = !value;
           if (value) {
-            _camera?.switchToDesiredState(_isFrozen ? FrameSourceState.off : FrameSourceState.on);
+            _camera?.switchToDesiredState(
+                _isFrozen ? FrameSourceState.off : FrameSourceState.on);
           }
         }));
   }
@@ -72,17 +74,42 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
 
     // The barcode tracking process is configured through barcode tracking settings
     // which are then applied to the barcode tracking instance that manages barcode tracking.
-    var captureSettings = BarcodeTrackingSettings.forScenario(BarcodeTrackingScenario.a);
+    var captureSettings =
+        BarcodeTrackingSettings.forScenario(BarcodeTrackingScenario.a);
 
     // The settings instance initially has all types of barcodes (symbologies) disabled. For the purpose of this
     // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the
     // symbologies that your app requires as every additional enabled symbology has an impact on processing times.
     captureSettings.enableSymbologies({
-      Symbology.ean8,
       Symbology.ean13Upca,
       Symbology.upce,
+      Symbology.ean8,
       Symbology.code39,
+      Symbology.code93,
       Symbology.code128,
+      Symbology.code11,
+      Symbology.code25,
+      Symbology.codabar,
+      Symbology.interleavedTwoOfFive,
+      Symbology.msiPlessey,
+      Symbology.qr,
+      Symbology.dataMatrix,
+      Symbology.aztec,
+      Symbology.maxiCode,
+      Symbology.dotCode,
+      Symbology.kix,
+      Symbology.rm4scc,
+      Symbology.gs1Databar,
+      Symbology.gs1DatabarExpanded,
+      Symbology.gs1DatabarLimited,
+      Symbology.pdf417,
+      Symbology.microPdf417,
+      Symbology.microQr,
+      Symbology.code32,
+      Symbology.lapa4sc,
+      Symbology.iataTwoOfFive,
+      Symbology.matrixTwoOfFive,
+      Symbology.uspsIntelligentMail
     });
 
     // Create new barcode tracking mode with the settings from above.
@@ -96,15 +123,20 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
 
     // Add a barcode tracking overlay to the data capture view to render the tracked barcodes on top of the video
     // preview. This is optional, but recommended for better visual feedback.
-    var _basicOverlay = BarcodeTrackingBasicOverlay.withBarcodeTrackingForViewWithStyle(
-        _barcodeTracking, _captureView, BarcodeTrackingBasicOverlayStyle.dot)
-      ..brush = Brush(Color(0x00FFFFFF), Color(0xFFFFFFFF), 2);
+    var _basicOverlay =
+        BarcodeTrackingBasicOverlay.withBarcodeTrackingForViewWithStyle(
+            _barcodeTracking,
+            _captureView,
+            BarcodeTrackingBasicOverlayStyle.dot)
+          ..brush = Brush(Color(0x00FFFFFF), Color(0xFFFFFFFF), 2);
     _captureView.addOverlay(_basicOverlay);
 
     // Add an advanced barcode tracking overlay to the data capture view to render AR visualization on
     // top of the camera preview.
-    _advancedOverlay = BarcodeTrackingAdvancedOverlay.withBarcodeTrackingForView(_barcodeTracking, _captureView)
-      ..listener = this;
+    _advancedOverlay =
+        BarcodeTrackingAdvancedOverlay.withBarcodeTrackingForView(
+            _barcodeTracking, _captureView)
+          ..listener = this;
     _captureView.addOverlay(_advancedOverlay);
 
     // Set the default camera as the frame source of the context. The camera is off by
@@ -121,14 +153,18 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
     Widget child;
     if (_isPermissionMessageVisible) {
       child = PlatformText('No permission to access the camera!',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black));
+          style: TextStyle(
+              fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black));
     } else {
       child = Stack(children: [
         _captureView,
         Container(
           alignment: Alignment.bottomCenter,
           padding: EdgeInsets.all(48.0),
-          child: SizedBox(height: 120, width: 120, child: FreezeButton(onPressed: (isFrozen) => _freeze(isFrozen))),
+          child: SizedBox(
+              height: 120,
+              width: 120,
+              child: FreezeButton(onPressed: (isFrozen) => _freeze(isFrozen))),
         )
       ]);
     }
@@ -147,7 +183,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
   // This function is called whenever objects are updated and it's the right place to react to
   // the tracking results.
   @override
-  void didUpdateSession(BarcodeTracking barcodeTracking, BarcodeTrackingSession session) {
+  void didUpdateSession(
+      BarcodeTracking barcodeTracking, BarcodeTrackingSession session) {
     // Remove information about tracked barcodes that are no longer tracked.
     for (final removedBarcodeId in session.removedTrackedBarcodes) {
       _trackedBarcodes[removedBarcodeId] = null;
@@ -172,13 +209,15 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
   }
 
   @override
-  Anchor anchorForTrackedBarcode(BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
+  Anchor anchorForTrackedBarcode(
+      BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
     // The offset of our overlay will be calculated from the top-center anchoring point.
     return Anchor.topCenter;
   }
 
   @override
-  void didTapViewForTrackedBarcode(BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
+  void didTapViewForTrackedBarcode(
+      BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
     // Transfer the didTap event to the corresponding bubble widget.
     var productBubble = _trackedBarcodes[trackedBarcode.identifier];
     if (productBubble != null) {
@@ -192,20 +231,24 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
   }
 
   @override
-  PointWithUnit offsetForTrackedBarcode(BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
+  PointWithUnit offsetForTrackedBarcode(
+      BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
     // We set the offset's height to be equal of the 100 percent of our overlay.
     // The minus sign means that the overlay will be above the barcode.
-    return PointWithUnit(DoubleWithUnit(0, MeasureUnit.fraction), DoubleWithUnit(-1, MeasureUnit.fraction));
+    return PointWithUnit(DoubleWithUnit(0, MeasureUnit.fraction),
+        DoubleWithUnit(-1, MeasureUnit.fraction));
   }
 
   @override
-  Widget? widgetForTrackedBarcode(BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
+  Widget? widgetForTrackedBarcode(
+      BarcodeTrackingAdvancedOverlay overlay, TrackedBarcode trackedBarcode) {
     return null;
   }
 
   _updateView(TrackedBarcode trackedBarcode, Quadrilateral viewLocation) {
     // If the barcode is wider than the desired percent of the data capture view's width, show it to the user.
-    var shouldBeShown = viewLocation.width() > MediaQuery.of(context).size.width * 0.1;
+    var shouldBeShown =
+        viewLocation.width() > MediaQuery.of(context).size.width * 0.1;
     if (!shouldBeShown) {
       if (_trackedBarcodes.containsKey(trackedBarcode.identifier) &&
           _trackedBarcodes[trackedBarcode.identifier] == null) {
@@ -217,7 +260,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
     }
 
     if (_trackedBarcodes[trackedBarcode.identifier] == null) {
-      var bubble = ProductBubble(trackedBarcode.barcode.data ?? '', BubbleViewState(BubbleType.StockInfo));
+      var bubble = ProductBubble(trackedBarcode.barcode.data ?? '',
+          BubbleViewState(BubbleType.StockInfo));
       _trackedBarcodes[trackedBarcode.identifier] = bubble;
       _advancedOverlay.setWidgetForTrackedBarcode(bubble, trackedBarcode);
     }
@@ -227,7 +271,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
     // Toggle barcode tracking to stop or start processing frames.
     _barcodeTracking.isEnabled = !isFrozen;
     // Switch the camera on or off to toggle streaming frames. The camera is stopped asynchronously.
-    _camera?.switchToDesiredState(isFrozen ? FrameSourceState.off : FrameSourceState.on);
+    _camera?.switchToDesiredState(
+        isFrozen ? FrameSourceState.off : FrameSourceState.on);
 
     _isFrozen = isFrozen;
   }

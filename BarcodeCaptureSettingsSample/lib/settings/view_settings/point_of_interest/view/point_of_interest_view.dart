@@ -19,7 +19,8 @@ class PointOfInterestSettingsView extends StatefulWidget {
   }
 }
 
-class _PointOfInterestSettingsViewState extends State<PointOfInterestSettingsView> with WidgetsBindingObserver {
+class _PointOfInterestSettingsViewState
+    extends State<PointOfInterestSettingsView> with WidgetsBindingObserver {
   final PointOfInterestBloc _bloc;
   late String pointX;
   late String pointY;
@@ -40,7 +41,8 @@ class _PointOfInterestSettingsViewState extends State<PointOfInterestSettingsVie
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -51,7 +53,8 @@ class _PointOfInterestSettingsViewState extends State<PointOfInterestSettingsVie
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(children: <Widget>[
                 ListTile(
                   contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
@@ -59,7 +62,10 @@ class _PointOfInterestSettingsViewState extends State<PointOfInterestSettingsVie
                   dense: false,
                   onTap: () => {
                     Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(PointOfInterestX())))
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DoubleWithUnitView(PointOfInterestX())))
                         .then((value) => setState(() {
                               pointX = _bloc.pointXDisplayText;
                             }))
@@ -72,7 +78,10 @@ class _PointOfInterestSettingsViewState extends State<PointOfInterestSettingsVie
                   dense: false,
                   onTap: () => {
                     Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(PointOfInterestY())))
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    DoubleWithUnitView(PointOfInterestY())))
                         .then((value) => setState(() {
                               pointY = _bloc.pointYDisplayText;
                             }))

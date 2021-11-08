@@ -96,10 +96,13 @@ class _ScanViewState extends State<ScanView> with WidgetsBindingObserver {
             icon: new Icon(Icons.settings),
             onPressed: () {
               _bloc.switchCameraOff();
-              for (int snackbarsLeft = _snackbarCounter; snackbarsLeft > 0; snackbarsLeft = snackbarsLeft - 1) {
+              for (int snackbarsLeft = _snackbarCounter;
+                  snackbarsLeft > 0;
+                  snackbarsLeft = snackbarsLeft - 1) {
                 ScaffoldMessenger.of(context).removeCurrentSnackBar();
               }
-              Navigator.pushNamed(context, BCRoutes.Settings.routeName).then((value) => _bloc.switchCameraOn());
+              Navigator.pushNamed(context, BCRoutes.Settings.routeName)
+                  .then((value) => _bloc.switchCameraOn());
             },
           )
         ],

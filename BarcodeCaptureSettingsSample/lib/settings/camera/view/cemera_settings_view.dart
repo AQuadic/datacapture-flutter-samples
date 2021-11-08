@@ -20,7 +20,8 @@ class CameraSettingsView extends StatefulWidget {
   }
 }
 
-class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBindingObserver {
+class _CameraSettingsViewState extends State<CameraSettingsView>
+    with WidgetsBindingObserver {
   final CameraSettingsBloc _bloc;
   late String? _cameraPosition;
 
@@ -34,7 +35,8 @@ class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBin
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -47,10 +49,12 @@ class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBin
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     ListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
                       title: Text("Camera Position"),
                       subtitle: Text(_cameraPosition ?? 'No Camera'),
                       dense: false,
@@ -65,10 +69,12 @@ class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBin
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
                       value: _bloc.isTorchOn,
                       title: Text("Desired Torch State"),
                       subtitle: Text(
@@ -85,10 +91,12 @@ class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBin
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     ListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
                       title: Text("Resolution"),
                       subtitle: Text(_bloc.videoResolution.name),
                       dense: false,
@@ -103,14 +111,17 @@ class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBin
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 0),
-                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                        new Text("Zoom Factor"),
-                        new Text(_bloc.zoomFactor.toStringAsFixed(2)),
-                      ]),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            new Text("Zoom Factor"),
+                            new Text(_bloc.zoomFactor.toStringAsFixed(2)),
+                          ]),
                     ),
                     Slider(
                       value: _bloc.zoomFactor,
@@ -128,14 +139,18 @@ class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBin
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 0),
-                      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                        new Text("Zoom Gesture Zoom Factor"),
-                        new Text(_bloc.zoomGestureZoomFactor.toStringAsFixed(2)),
-                      ]),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            new Text("Zoom Gesture Zoom Factor"),
+                            new Text(
+                                _bloc.zoomGestureZoomFactor.toStringAsFixed(2)),
+                          ]),
                     ),
                     Slider(
                       value: _bloc.zoomGestureZoomFactor,
@@ -153,10 +168,12 @@ class _CameraSettingsViewState extends State<CameraSettingsView> with WidgetsBin
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     ListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
                       title: Text("Focus Gesture"),
                       subtitle: Text(_bloc.focusGestureStrategy.name),
                       dense: false,

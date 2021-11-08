@@ -18,7 +18,8 @@ class ResultSettingsView extends StatefulWidget {
   }
 }
 
-class _ResultSettingsViewState extends State<ResultSettingsView> with WidgetsBindingObserver {
+class _ResultSettingsViewState extends State<ResultSettingsView>
+    with WidgetsBindingObserver {
   final ResultSettingsBloc _bloc;
 
   _ResultSettingsViewState(this._bloc);
@@ -29,7 +30,8 @@ class _ResultSettingsViewState extends State<ResultSettingsView> with WidgetsBin
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -42,10 +44,12 @@ class _ResultSettingsViewState extends State<ResultSettingsView> with WidgetsBin
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: Column(children: <Widget>[
                     SwitchListTile(
-                      contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
+                      contentPadding:
+                          const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
                       value: _bloc.continuousScan,
                       title: Text("Continuous Scanning"),
                       onChanged: (value) {

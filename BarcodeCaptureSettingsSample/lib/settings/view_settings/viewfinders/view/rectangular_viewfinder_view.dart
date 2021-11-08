@@ -16,11 +16,16 @@ class RectangularViewfinderSettingsView {
   final Function _setState;
   late String widthText;
   late String heigthText;
-  late TextEditingController _dimmingValueController = _getDimmingValueController();
-  late TextEditingController _heightAspectValueController = _getHeightAspectValueController();
-  late TextEditingController _widthAspectValueController = _getWidthAspectValueController();
-  late TextEditingController _shorterDimensionValueController = _getShorterDimensionValueController();
-  late TextEditingController _longerDimensionAspectValueController = _getLongerDimensionAspectValueController();
+  late TextEditingController _dimmingValueController =
+      _getDimmingValueController();
+  late TextEditingController _heightAspectValueController =
+      _getHeightAspectValueController();
+  late TextEditingController _widthAspectValueController =
+      _getWidthAspectValueController();
+  late TextEditingController _shorterDimensionValueController =
+      _getShorterDimensionValueController();
+  late TextEditingController _longerDimensionAspectValueController =
+      _getLongerDimensionAspectValueController();
 
   RectangularViewfinderSettingsView(this._setState, this._bloc);
 
@@ -156,8 +161,11 @@ class RectangularViewfinderSettingsView {
           title: Text("Width"),
           dense: false,
           onTap: () => {
-            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DoubleWithUnitView(RectangularViewfinderWidthBloc())))
+            Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DoubleWithUnitView(
+                            RectangularViewfinderWidthBloc())))
                 .then((value) => _setState(() {
                       widthText = _bloc.widthDisplayText;
                     }))
@@ -169,8 +177,11 @@ class RectangularViewfinderSettingsView {
           title: Text("Height"),
           dense: false,
           onTap: () => {
-            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DoubleWithUnitView(RectangularViewfinderHeightBloc())))
+            Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DoubleWithUnitView(
+                            RectangularViewfinderHeightBloc())))
                 .then((value) => _setState(() {
                       heigthText = _bloc.heigthDisplayText;
                     }))
@@ -191,8 +202,11 @@ class RectangularViewfinderSettingsView {
           title: Text("Width"),
           dense: false,
           onTap: () => {
-            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DoubleWithUnitView(RectangularViewfinderWidthBloc())))
+            Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DoubleWithUnitView(
+                            RectangularViewfinderWidthBloc())))
                 .then((value) => _setState(() {
                       widthText = _bloc.widthDisplayText;
                     }))
@@ -226,8 +240,11 @@ class RectangularViewfinderSettingsView {
           title: Text("Height"),
           dense: false,
           onTap: () => {
-            Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DoubleWithUnitView(RectangularViewfinderHeightBloc())))
+            Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DoubleWithUnitView(
+                            RectangularViewfinderHeightBloc())))
                 .then((value) => _setState(() {
                       heigthText = _bloc.heigthDisplayText;
                     }))
@@ -399,7 +416,8 @@ class RectangularViewfinderSettingsView {
   }
 
   TextEditingController _getDimmingValueController() {
-    var controller = TextEditingController(text: _bloc.dimming.toStringAsFixed(2));
+    var controller =
+        TextEditingController(text: _bloc.dimming.toStringAsFixed(2));
     controller.addListener(() {
       var newValue = double.tryParse(controller.text);
       if (newValue != null) {
@@ -410,7 +428,8 @@ class RectangularViewfinderSettingsView {
   }
 
   TextEditingController _getShorterDimensionValueController() {
-    var controller = TextEditingController(text: _bloc.shorterDimension.toStringAsFixed(2));
+    var controller =
+        TextEditingController(text: _bloc.shorterDimension.toStringAsFixed(2));
     controller.addListener(() {
       var newValue = double.tryParse(controller.text);
       if (newValue != null) {
@@ -421,7 +440,8 @@ class RectangularViewfinderSettingsView {
   }
 
   TextEditingController _getHeightAspectValueController() {
-    var controller = TextEditingController(text: _bloc.heightAspect.toStringAsFixed(2));
+    var controller =
+        TextEditingController(text: _bloc.heightAspect.toStringAsFixed(2));
     controller.addListener(() {
       var newValue = double.tryParse(controller.text);
       if (newValue != null) {
@@ -432,7 +452,8 @@ class RectangularViewfinderSettingsView {
   }
 
   TextEditingController _getWidthAspectValueController() {
-    var controller = TextEditingController(text: _bloc.widthAspect.toStringAsFixed(2));
+    var controller =
+        TextEditingController(text: _bloc.widthAspect.toStringAsFixed(2));
     controller.addListener(() {
       var newValue = double.tryParse(controller.text);
       if (newValue != null) {
@@ -443,7 +464,8 @@ class RectangularViewfinderSettingsView {
   }
 
   TextEditingController _getLongerDimensionAspectValueController() {
-    var controller = TextEditingController(text: _bloc.longerDimensionAspect.toStringAsFixed(2));
+    var controller = TextEditingController(
+        text: _bloc.longerDimensionAspect.toStringAsFixed(2));
     controller.addListener(() {
       var newValue = double.tryParse(controller.text);
       if (newValue != null) {

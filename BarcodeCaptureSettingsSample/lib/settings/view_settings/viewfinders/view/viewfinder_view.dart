@@ -25,16 +25,20 @@ class ViewfindersSettingsView extends StatefulWidget {
   }
 }
 
-class _ViewfindersSettingsViewState extends State<ViewfindersSettingsView> with WidgetsBindingObserver {
+class _ViewfindersSettingsViewState extends State<ViewfindersSettingsView>
+    with WidgetsBindingObserver {
   final ViewfindersBloc _bloc;
   late AimerViewfinderSettingsView _aimerViewfinderSettingsView;
   late LaserlineViewfinderSettingsView _laserlineViewfinderSettingsView;
   late RectangularViewfinderSettingsView _rectangularViewfinderSettingsView;
 
   _ViewfindersSettingsViewState(this._bloc) {
-    _aimerViewfinderSettingsView = AimerViewfinderSettingsView(this.setState, AimerViewfinderBloc());
-    _laserlineViewfinderSettingsView = LaserlineViewfinderSettingsView(this.setState, LaserlineViewfinderBloc());
-    _rectangularViewfinderSettingsView = RectangularViewfinderSettingsView(this.setState, RectangularViewfinderBloc());
+    _aimerViewfinderSettingsView =
+        AimerViewfinderSettingsView(this.setState, AimerViewfinderBloc());
+    _laserlineViewfinderSettingsView = LaserlineViewfinderSettingsView(
+        this.setState, LaserlineViewfinderBloc());
+    _rectangularViewfinderSettingsView = RectangularViewfinderSettingsView(
+        this.setState, RectangularViewfinderBloc());
   }
 
   @override
@@ -43,7 +47,8 @@ class _ViewfindersSettingsViewState extends State<ViewfindersSettingsView> with 
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -56,7 +61,8 @@ class _ViewfindersSettingsViewState extends State<ViewfindersSettingsView> with 
               Card(
                 elevation: 4.0,
                 margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)),
                 child: Column(children: <Widget>[
                   ListTile(
                     contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
@@ -84,7 +90,8 @@ class _ViewfindersSettingsViewState extends State<ViewfindersSettingsView> with 
               Card(
                 elevation: 4.0,
                 margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)),
                 child: Column(
                   children: _getSelectedViewfinderConfigurationViews(context),
                 ),

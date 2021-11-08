@@ -43,28 +43,44 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: BCRoutes.Home.routeName,
         routes: {
-          BCRoutes.Home.routeName: (context) => ScanView(BCRoutes.Home.viewTitle),
-          BCRoutes.Settings.routeName: (context) => MainSettingsView(BCRoutes.Settings.viewTitle),
-          BCRoutes.CameraSettings.routeName: (context) => CameraSettingsView(BCRoutes.CameraSettings.viewTitle),
+          BCRoutes.Home.routeName: (context) =>
+              ScanView(BCRoutes.Home.viewTitle),
+          BCRoutes.Settings.routeName: (context) =>
+              MainSettingsView(BCRoutes.Settings.viewTitle),
+          BCRoutes.CameraSettings.routeName: (context) =>
+              CameraSettingsView(BCRoutes.CameraSettings.viewTitle),
           BCRoutes.BarcodeCaptureSettings.routeName: (context) =>
               BarcodeSettingsView(BCRoutes.BarcodeCaptureSettings.viewTitle),
-          BCRoutes.Symbologies.routeName: (context) => SymbologiesSettingsView(BCRoutes.Symbologies.viewTitle),
+          BCRoutes.Symbologies.routeName: (context) =>
+              SymbologiesSettingsView(BCRoutes.Symbologies.viewTitle),
           BCRoutes.LocationSelection.routeName: (context) =>
-              LocationSelectionSettingsView(BCRoutes.LocationSelection.viewTitle),
-          BCRoutes.Feedback.routeName: (context) => FeedbackSettingsView(BCRoutes.Feedback.viewTitle),
-          BCRoutes.ViewSettings.routeName: (context) => ViewSettingsView(BCRoutes.ViewSettings.viewTitle),
-          BCRoutes.Overlay.routeName: (context) => OverlaySettingsView(BCRoutes.Overlay.viewTitle),
-          BCRoutes.ResultSettings.routeName: (context) => ResultSettingsView(BCRoutes.ResultSettings.viewTitle),
+              LocationSelectionSettingsView(
+                  BCRoutes.LocationSelection.viewTitle),
+          BCRoutes.Feedback.routeName: (context) =>
+              FeedbackSettingsView(BCRoutes.Feedback.viewTitle),
+          BCRoutes.ViewSettings.routeName: (context) =>
+              ViewSettingsView(BCRoutes.ViewSettings.viewTitle),
+          BCRoutes.Overlay.routeName: (context) =>
+              OverlaySettingsView(BCRoutes.Overlay.viewTitle),
+          BCRoutes.ResultSettings.routeName: (context) =>
+              ResultSettingsView(BCRoutes.ResultSettings.viewTitle),
           BCRoutes.CodeDuplicateFilter.routeName: (context) =>
-              CodeDuplicateFilterSettingsView(BCRoutes.CodeDuplicateFilter.viewTitle),
-          BCRoutes.CompositeTypes.routeName: (context) => CompositeTypesSettingsView(BCRoutes.CompositeTypes.viewTitle),
-          BCRoutes.ScanArea.routeName: (context) => ScanAreaSettingsView(BCRoutes.ScanArea.viewTitle),
+              CodeDuplicateFilterSettingsView(
+                  BCRoutes.CodeDuplicateFilter.viewTitle),
+          BCRoutes.CompositeTypes.routeName: (context) =>
+              CompositeTypesSettingsView(BCRoutes.CompositeTypes.viewTitle),
+          BCRoutes.ScanArea.routeName: (context) =>
+              ScanAreaSettingsView(BCRoutes.ScanArea.viewTitle),
           BCRoutes.PointOfInterest.routeName: (context) =>
               PointOfInterestSettingsView(BCRoutes.PointOfInterest.viewTitle),
-          BCRoutes.Viewfinder.routeName: (context) => ViewfindersSettingsView(BCRoutes.Viewfinder.viewTitle),
-          BCRoutes.Logo.routeName: (context) => LogoSettingsView(BCRoutes.Logo.viewTitle),
-          BCRoutes.Gestures.routeName: (context) => GesturesSettingsView(BCRoutes.Gestures.viewTitle),
-          BCRoutes.Controls.routeName: (context) => ControlsSettingsView(BCRoutes.Controls.viewTitle),
+          BCRoutes.Viewfinder.routeName: (context) =>
+              ViewfindersSettingsView(BCRoutes.Viewfinder.viewTitle),
+          BCRoutes.Logo.routeName: (context) =>
+              LogoSettingsView(BCRoutes.Logo.viewTitle),
+          BCRoutes.Gestures.routeName: (context) =>
+              GesturesSettingsView(BCRoutes.Gestures.viewTitle),
+          BCRoutes.Controls.routeName: (context) =>
+              ControlsSettingsView(BCRoutes.Controls.viewTitle),
         });
   }
 }

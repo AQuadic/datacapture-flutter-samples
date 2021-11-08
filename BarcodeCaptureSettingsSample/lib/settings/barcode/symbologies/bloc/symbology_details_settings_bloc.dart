@@ -15,7 +15,8 @@ class SymbologyDetailsSettingsBloc extends Bloc {
   final Symbology symbology;
   final SymbologyDescription description;
 
-  SymbologyDetailsSettingsBloc(this.symbology) : description = SymbologyDescription.forSymbology(symbology);
+  SymbologyDetailsSettingsBloc(this.symbology)
+      : description = SymbologyDescription.forSymbology(symbology);
 
   String get title {
     return description.readableName;
@@ -30,7 +31,8 @@ class SymbologyDetailsSettingsBloc extends Bloc {
   }
 
   bool get isRangeSettingsAvailable {
-    return description.activeSymbolCountRange.minimum != description.activeSymbolCountRange.maximum;
+    return description.activeSymbolCountRange.minimum !=
+        description.activeSymbolCountRange.maximum;
   }
 
   bool get areExtensionsAvailable {
@@ -55,7 +57,8 @@ class SymbologyDetailsSettingsBloc extends Bloc {
 
   Set<ExtensionItem> get extensions {
     return description.supportedExtensions
-        .map((e) => ExtensionItem(e, _settings.isExtensionEnabled(symbology, e)))
+        .map(
+            (e) => ExtensionItem(e, _settings.isExtensionEnabled(symbology, e)))
         .toSet();
   }
 

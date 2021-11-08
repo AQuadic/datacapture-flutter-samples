@@ -17,7 +17,8 @@ void main() async {
   runApp(MyApp());
 }
 
-const String licenseKey = '-- ENTER YOUR SCANDIT LICENSE KEY HERE --';
+const String licenseKey =
+    'AVeAKTsyGhNxQJEEpgVkV0EBEY6rBvsRbUY9M4A3sA1cLy84ei5jXqh1FpVDFctPGEg6ffFeVQG2PrnOsnBPH8VK4+xdQfqVWG/1wSsYqJvcX6Udz0SPyB0Izc4VNiWWnk8ds65/50CjDCkhoFttsDF17ScSCosdYnCjz5RhZ+89W6WuwUITulZx7O2FD+GJJk+ayTFxh5GUFRuge3ECASV9KC3OWPHG1i7hm1UnKmbeCHaV62XThH0sWIjmBLlRPXAxWNhqY5HZPDmlwQdMUmgMuJ6CT8UqnWjThJEijRNtG4w07WoZINFXUhG1colVZ17xaPFAXKf7PBVVrnZtotdR3g/ldlTeLHDxzHdEldemZXl3WEGA6+5K4wOhYdWqGn+wR5Bf5GMaShrfpWIIU6YTx1FvYIXgP1wrQ+B9GIF0eZwRunohEJc6h70yatbdJQat9q8in5V6V6Yg6D2pyA5KiTxdHGQalHui7uNkrnkZT/Ala3wBZT4xMHwla8p/P0zqTBwk8dmUdLG57lI8W3dAV0SoDpi/IcepSnOG1klsFlS5NUVMmiL+UkSkcXBS7POyltbv94ilwmEctTWZL2LU3yjWe8LpC3l8QaEB7ZXNlyAdo41S97C+/g0yHGuziY9OsZrXtZzZbdxfCzvpTaljgi0cdLdSnV+samuFuTasaV4XXWQHbLG1Vnza/UO99qEb0oLTh+pI5hbSVIURGKnwBR5LSZJ6Vm6t5y8WqwYGcqFHo3YNFNELWT5wCOD1Jintu9ND/tQB5TNo0b7XTA6//KeHaycybx8MvDaPZAWpFJp4HM9ADtyfdi/vhaEj20KRhayQjfWLLvUvCnl8xoyWyXGQCP8mg0iya8pbLtRti37DwzE+p1h05ULccIFHsgNt5BG/qLauNmBat+qH3U0Wq9d6ocNYqzg68Img+MjMW7PpMf1irKk75ZXdgOQgynAdxAufHloozKZUbDBTHzCWVAkAm4IU2hwCb+ojwMwMvll8IaqyzR4Qcatbt3wTs3iI8kMMjCT4N9sYvmjaOnxpuft3m56Gfc0gsfupw2eESSnGvYOUtGyWdyoYC33KBvD41Eq+uj0QjwkY0OH7hzPRrO0rc6RYKUrKYYYN7CXkZDRJe33m/u69+IZoHyD35mOmzGNOySTSAgUWwRQAa5sFIulqpeGaVdo9bRpDrQ6HxwUCdMXjj8Pw9lsgS22k1Zm4N5gRyA==';
 
 class MyApp extends StatelessWidget {
   @override
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
 class BarcodeSelectionScreen extends StatefulWidget {
   // Create data capture context using your license key.
   @override
-  State<StatefulWidget> createState() => _BarcodeSelectionScreenState(DataCaptureContext.forLicenseKey(licenseKey));
+  State<StatefulWidget> createState() => _BarcodeSelectionScreenState(
+      DataCaptureContext.forLicenseKey(licenseKey));
 }
 
 class _BarcodeSelectionScreenState extends State<BarcodeSelectionScreen>
@@ -79,17 +81,40 @@ class _BarcodeSelectionScreenState extends State<BarcodeSelectionScreen>
     // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the
     // symbologies that your app requires as every additional enabled symbology has an impact on processing times.
     _selectionSettings.enableSymbologies({
-      Symbology.ean8,
       Symbology.ean13Upca,
       Symbology.upce,
+      Symbology.ean8,
+      Symbology.code39,
+      Symbology.code93,
+      Symbology.code128,
+      Symbology.code11,
+      Symbology.code25,
+      Symbology.codabar,
+      Symbology.interleavedTwoOfFive,
+      Symbology.msiPlessey,
       Symbology.qr,
       Symbology.dataMatrix,
-      Symbology.code39,
-      Symbology.code128,
+      Symbology.aztec,
+      Symbology.maxiCode,
+      Symbology.dotCode,
+      Symbology.kix,
+      Symbology.rm4scc,
+      Symbology.gs1Databar,
+      Symbology.gs1DatabarExpanded,
+      Symbology.gs1DatabarLimited,
+      Symbology.pdf417,
+      Symbology.microPdf417,
+      Symbology.microQr,
+      Symbology.code32,
+      Symbology.lapa4sc,
+      Symbology.iataTwoOfFive,
+      Symbology.matrixTwoOfFive,
+      Symbology.uspsIntelligentMail
     });
 
     // Create new barcode selection mode with the settings created above.
-    _barcodeSelection = BarcodeSelection.forContext(_context, _selectionSettings);
+    _barcodeSelection =
+        BarcodeSelection.forContext(_context, _selectionSettings);
 
     // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
     // camera preview. The view must be connected to the data capture context.
@@ -97,7 +122,8 @@ class _BarcodeSelectionScreenState extends State<BarcodeSelectionScreen>
 
     // Add a barcode selection overlay to the data capture view to render the location of captured barcodes on top of the video preview.
     // This is optional, but recommended for better visual feedback.
-    var overlay = BarcodeSelectionBasicOverlay.withBarcodeSelectionForView(_barcodeSelection, _captureView);
+    var overlay = BarcodeSelectionBasicOverlay.withBarcodeSelectionForView(
+        _barcodeSelection, _captureView);
 
     _captureView.addOverlay(overlay);
 
@@ -117,7 +143,8 @@ class _BarcodeSelectionScreenState extends State<BarcodeSelectionScreen>
     Widget child;
     if (_isPermissionMessageVisible) {
       child = Text('No permission to access the camera!',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black));
+          style: TextStyle(
+              fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black));
     } else {
       child = _captureView;
     }
@@ -141,7 +168,8 @@ class _BarcodeSelectionScreenState extends State<BarcodeSelectionScreen>
             if (index == 0) {
               _selectionSettings.selectionType = BarcodeSelectionTapSelection();
             } else {
-              _selectionSettings.selectionType = BarcodeSelectionAimerSelection();
+              _selectionSettings.selectionType =
+                  BarcodeSelectionAimerSelection();
             }
             _barcodeSelection.applySettings(_selectionSettings);
             _currentIndex = index;
@@ -165,18 +193,21 @@ class _BarcodeSelectionScreenState extends State<BarcodeSelectionScreen>
   }
 
   @override
-  void didUpdateSelection(BarcodeSelection barcodeSelection, BarcodeSelectionSession session) async {
+  void didUpdateSelection(BarcodeSelection barcodeSelection,
+      BarcodeSelectionSession session) async {
     // Check if we have selected a barcode, if that's the case, show a snackbar with its info.
     var newlySelectedBarcodes = session.newlySelectedBarcodes;
     if (newlySelectedBarcodes.isEmpty) return;
 
     // Get the human readable name of the symbology and assemble the result to be shown.
     var barcode = newlySelectedBarcodes.first;
-    var symbologyReadableName = SymbologyDescription.forSymbology(barcode.symbology).readableName;
+    var symbologyReadableName =
+        SymbologyDescription.forSymbology(barcode.symbology).readableName;
 
     var selectionCount = await session.getCount(barcode);
 
-    final result = '${symbologyReadableName}: ${barcode.data} \nTimes: ${selectionCount}';
+    final result =
+        '${symbologyReadableName}: ${barcode.data} \nTimes: ${selectionCount}';
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(result),
@@ -185,7 +216,8 @@ class _BarcodeSelectionScreenState extends State<BarcodeSelectionScreen>
   }
 
   @override
-  void didUpdateSession(BarcodeSelection barcodeCapture, BarcodeSelectionSession session) {}
+  void didUpdateSession(
+      BarcodeSelection barcodeCapture, BarcodeSelectionSession session) {}
 
   @override
   void dispose() {

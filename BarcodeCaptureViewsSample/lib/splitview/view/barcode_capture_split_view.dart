@@ -20,14 +20,16 @@ class BarcodeCaptureSplitView extends StatefulWidget {
   final DataCaptureContext dataCaptureContext;
   final String title;
 
-  BarcodeCaptureSplitView(this.dataCaptureContext, this.title, {Key? key}) : super(key: key);
+  BarcodeCaptureSplitView(this.dataCaptureContext, this.title, {Key? key})
+      : super(key: key);
 
   @override
-  _BarcodeCaptureSplitViewState createState() =>
-      _BarcodeCaptureSplitViewState(BarcodeCaptureSplitBloc(dataCaptureContext));
+  _BarcodeCaptureSplitViewState createState() => _BarcodeCaptureSplitViewState(
+      BarcodeCaptureSplitBloc(dataCaptureContext));
 }
 
-class _BarcodeCaptureSplitViewState extends State<BarcodeCaptureSplitView> with WidgetsBindingObserver {
+class _BarcodeCaptureSplitViewState extends State<BarcodeCaptureSplitView>
+    with WidgetsBindingObserver {
   final BarcodeCaptureSplitBloc _bloc;
 
   _BarcodeCaptureSplitViewState(this._bloc);
@@ -92,15 +94,20 @@ class _BarcodeCaptureSplitViewState extends State<BarcodeCaptureSplitView> with 
                   ),
                 ],
               ),
-              size: widgets.Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height * 0.5),
+              size: widgets.Size(MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height * 0.5),
             ),
             // Observing the tracked barcodes
             Expanded(
               child: StreamBuilder(
                 stream: _bloc.capturedBarcodes,
-                builder: (BuildContext context, AsyncSnapshot<List<Barcode>> snapshot) {
-                  if (snapshot.hasData) return _getScannedBarcodesWidget(snapshot.data ?? List.empty());
-                  if (snapshot.hasError) return Center(child: Text('${snapshot.error}'));
+                builder: (BuildContext context,
+                    AsyncSnapshot<List<Barcode>> snapshot) {
+                  if (snapshot.hasData)
+                    return _getScannedBarcodesWidget(
+                        snapshot.data ?? List.empty());
+                  if (snapshot.hasError)
+                    return Center(child: Text('${snapshot.error}'));
                   return Center(child: Text('Empty'));
                 },
               ),
@@ -125,7 +132,8 @@ class _BarcodeCaptureSplitViewState extends State<BarcodeCaptureSplitView> with 
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
               child: Container(
-                decoration: BoxDecoration(color: Colors.black87.withOpacity(0.7)),
+                decoration:
+                    BoxDecoration(color: Colors.black87.withOpacity(0.7)),
                 child: Center(
                   child: Text(
                     'Tap to continue',

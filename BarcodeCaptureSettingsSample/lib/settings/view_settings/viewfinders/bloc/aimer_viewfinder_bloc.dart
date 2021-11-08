@@ -17,10 +17,15 @@ class AimerViewfinderBloc extends Bloc {
 
   List<ColorItem> get availableFrameColors {
     return [
-      ColorItem('Default', _settings.aimerDefaultFrameColor,
-          _settings.aimerFrameColor.value == _settings.aimerDefaultFrameColor.value),
-      ColorItem('Blue', blueColor, _settings.aimerFrameColor.value == blueColor.value),
-      ColorItem('Red', redColor, _settings.aimerFrameColor.value == redColor.value),
+      ColorItem(
+          'Default',
+          _settings.aimerDefaultFrameColor,
+          _settings.aimerFrameColor.value ==
+              _settings.aimerDefaultFrameColor.value),
+      ColorItem('Blue', blueColor,
+          _settings.aimerFrameColor.value == blueColor.value),
+      ColorItem(
+          'Red', redColor, _settings.aimerFrameColor.value == redColor.value),
     ];
   }
 
@@ -34,10 +39,15 @@ class AimerViewfinderBloc extends Bloc {
 
   List<ColorItem> get availableDotColors {
     return [
-      ColorItem('Default', _settings.aimerDefaultDotColor,
-          _settings.aimerDotColor.value == _settings.aimerDefaultDotColor.value),
-      ColorItem('Blue', blueColor, _settings.aimerDotColor.value == blueColor.value),
-      ColorItem('Red', redColor, _settings.aimerDotColor.value == redColor.value),
+      ColorItem(
+          'Default',
+          _settings.aimerDefaultDotColor,
+          _settings.aimerDotColor.value ==
+              _settings.aimerDefaultDotColor.value),
+      ColorItem(
+          'Blue', blueColor, _settings.aimerDotColor.value == blueColor.value),
+      ColorItem(
+          'Red', redColor, _settings.aimerDotColor.value == redColor.value),
     ];
   }
 

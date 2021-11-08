@@ -23,7 +23,8 @@ class MatrixScanScreen extends StatefulWidget {
 
   // Create data capture context using your license key.
   @override
-  State<StatefulWidget> createState() => _MatrixScanScreenState(DataCaptureContext.forLicenseKey(licenseKey));
+  State<StatefulWidget> createState() =>
+      _MatrixScanScreenState(DataCaptureContext.forLicenseKey(licenseKey));
 }
 
 class _MatrixScanScreenState extends State<MatrixScanScreen>
@@ -75,11 +76,35 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
     // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the
     // symbologies that your app requires as every additional enabled symbology has an impact on processing times.
     captureSettings.enableSymbologies({
-      Symbology.ean8,
       Symbology.ean13Upca,
       Symbology.upce,
+      Symbology.ean8,
       Symbology.code39,
+      Symbology.code93,
       Symbology.code128,
+      Symbology.code11,
+      Symbology.code25,
+      Symbology.codabar,
+      Symbology.interleavedTwoOfFive,
+      Symbology.msiPlessey,
+      Symbology.qr,
+      Symbology.dataMatrix,
+      Symbology.aztec,
+      Symbology.maxiCode,
+      Symbology.dotCode,
+      Symbology.kix,
+      Symbology.rm4scc,
+      Symbology.gs1Databar,
+      Symbology.gs1DatabarExpanded,
+      Symbology.gs1DatabarLimited,
+      Symbology.pdf417,
+      Symbology.microPdf417,
+      Symbology.microQr,
+      Symbology.code32,
+      Symbology.lapa4sc,
+      Symbology.iataTwoOfFive,
+      Symbology.matrixTwoOfFive,
+      Symbology.uspsIntelligentMail
     });
 
     // Create new barcode tracking mode with the settings from above.
@@ -93,8 +118,11 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
 
     // Add a barcode tracking overlay to the data capture view to render the tracked barcodes on
     // top of the video preview. This is optional, but recommended for better visual feedback.
-    _captureView.addOverlay(BarcodeTrackingBasicOverlay.withBarcodeTrackingForViewWithStyle(
-        _barcodeTracking, _captureView, BarcodeTrackingBasicOverlayStyle.frame));
+    _captureView.addOverlay(
+        BarcodeTrackingBasicOverlay.withBarcodeTrackingForViewWithStyle(
+            _barcodeTracking,
+            _captureView,
+            BarcodeTrackingBasicOverlayStyle.frame));
 
     // Set the default camera as the frame source of the context. The camera is off by
     // default and must be turned on to start streaming frames to the data capture context for recognition.
@@ -110,7 +138,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
     Widget child;
     if (_isPermissionMessageVisible) {
       child = PlatformText('No permission to access the camera!',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black));
+          style: TextStyle(
+              fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black));
     } else {
       var bottomPadding = 48 + MediaQuery.of(context).padding.bottom;
       var containerPadding = defaultTargetPlatform == TargetPlatform.iOS
@@ -126,7 +155,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
               child: PlatformButton(
                   onPressed: () => _showScanResults(context),
                   cupertino: (_, __) => CupertinoButtonData(
-                      color: Color(scanditBlue), borderRadius: BorderRadius.all(Radius.circular(3.0))),
+                      color: Color(scanditBlue),
+                      borderRadius: BorderRadius.all(Radius.circular(3.0))),
                   child: PlatformText(
                     'Done',
                     style: TextStyle(fontSize: 16, color: Colors.white),
@@ -134,7 +164,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
         )
       ]);
     }
-    return PlatformScaffold(appBar: PlatformAppBar(title: Text(widget.title)), body: child);
+    return PlatformScaffold(
+        appBar: PlatformAppBar(title: Text(widget.title)), body: child);
   }
 
   @override
@@ -149,9 +180,11 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
   // This function is called whenever objects are updated and it's the right place to react to
   // the tracking results.
   @override
-  void didUpdateSession(BarcodeTracking barcodeTracking, BarcodeTrackingSession session) {
+  void didUpdateSession(
+      BarcodeTracking barcodeTracking, BarcodeTrackingSession session) {
     for (final trackedBarcode in session.addedTrackedBarcodes) {
-      scanResults.add(ScanResult(trackedBarcode.barcode.symbology, trackedBarcode.barcode.data ?? ''));
+      scanResults.add(ScanResult(
+          trackedBarcode.barcode.symbology, trackedBarcode.barcode.data ?? ''));
     }
   }
 
@@ -166,7 +199,8 @@ class _MatrixScanScreenState extends State<MatrixScanScreen>
   }
 
   void _showScanResults(BuildContext context) {
-    Navigator.pushNamed(context, "/scanResults", arguments: scanResults).then((value) => _resetScanResults());
+    Navigator.pushNamed(context, "/scanResults", arguments: scanResults)
+        .then((value) => _resetScanResults());
   }
 
   void _resetScanResults() {

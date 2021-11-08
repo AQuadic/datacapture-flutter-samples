@@ -13,7 +13,9 @@ class CompositeTypesBloc extends Bloc {
   final SettingsRepository _settings = SettingsRepository();
 
   List<CompositeTypeItem> get compositeTypes {
-    return CompositeType.values.map((e) => CompositeTypeItem(e, _settings.isCompositeTypeEnabled(e))).toList();
+    return CompositeType.values
+        .map((e) => CompositeTypeItem(e, _settings.isCompositeTypeEnabled(e)))
+        .toList();
   }
 
   void toggleCompositeType(CompositeTypeItem item) {

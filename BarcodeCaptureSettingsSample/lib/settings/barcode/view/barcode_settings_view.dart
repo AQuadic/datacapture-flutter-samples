@@ -19,7 +19,8 @@ class BarcodeSettingsView extends StatefulWidget {
   }
 }
 
-class _BarcodeSettingsViewState extends State<BarcodeSettingsView> with WidgetsBindingObserver {
+class _BarcodeSettingsViewState extends State<BarcodeSettingsView>
+    with WidgetsBindingObserver {
   final BarcodeSettingsBloc _bloc;
 
   _BarcodeSettingsViewState(this._bloc);
@@ -30,7 +31,8 @@ class _BarcodeSettingsViewState extends State<BarcodeSettingsView> with WidgetsB
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(

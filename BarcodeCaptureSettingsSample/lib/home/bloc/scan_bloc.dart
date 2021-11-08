@@ -17,7 +17,8 @@ class ScanBloc extends Bloc implements BarcodeCaptureListener {
 
   StreamController<String> _continuousScanResultController = StreamController();
 
-  Stream<String> get continuousScanResult => _continuousScanResultController.stream;
+  Stream<String> get continuousScanResult =>
+      _continuousScanResultController.stream;
 
   StreamController<String> _singleScanResultController = StreamController();
 
@@ -57,7 +58,8 @@ class ScanBloc extends Bloc implements BarcodeCaptureListener {
     var symbology = SymbologyDescription.forSymbology(barcode.symbology);
 
     var scannedMessage = 'Scanned: ${barcode.data} (${symbology.readableName})';
-    if (barcode.compositeFlag != CompositeFlag.none && barcode.compositeFlag != CompositeFlag.unknown) {
+    if (barcode.compositeFlag != CompositeFlag.none &&
+        barcode.compositeFlag != CompositeFlag.unknown) {
       var compositeCodeType = '';
 
       switch (barcode.compositeFlag) {
@@ -73,11 +75,13 @@ class ScanBloc extends Bloc implements BarcodeCaptureListener {
         default:
           break;
       }
-      scannedMessage = '$compositeCodeType\n${symbology.readableName}:\n${barcode.data}\n${barcode.compositeData}\n';
+      scannedMessage =
+          '$compositeCodeType\n${symbology.readableName}:\n${barcode.data}\n${barcode.compositeData}\n';
       scannedMessage += 'Symbol Count: ${barcode.symbolCount}';
     }
     if (barcode.addOnData != null) {
-      scannedMessage = '${symbology.readableName}:\n${barcode.data} ${barcode.addOnData}\n';
+      scannedMessage =
+          '${symbology.readableName}:\n${barcode.data} ${barcode.addOnData}\n';
       scannedMessage += 'Symbol Count: ${barcode.symbolCount}';
     }
 
@@ -89,7 +93,8 @@ class ScanBloc extends Bloc implements BarcodeCaptureListener {
   }
 
   @override
-  void didUpdateSession(BarcodeCapture barcodeCapture, BarcodeCaptureSession session) {}
+  void didUpdateSession(
+      BarcodeCapture barcodeCapture, BarcodeCaptureSession session) {}
 
   @override
   void dispose() {

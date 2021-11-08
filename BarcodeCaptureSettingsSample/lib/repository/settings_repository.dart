@@ -10,10 +10,12 @@ import 'package:scandit_flutter_datacapture_barcode/scandit_flutter_datacapture_
 import 'package:scandit_flutter_datacapture_core/scandit_flutter_datacapture_core.dart';
 import 'dart:math';
 
-const String licenseKey = '-- ENTER YOUR SCANDIT LICENSE KEY HERE --';
+const String licenseKey =
+    'AVeAKTsyGhNxQJEEpgVkV0EBEY6rBvsRbUY9M4A3sA1cLy84ei5jXqh1FpVDFctPGEg6ffFeVQG2PrnOsnBPH8VK4+xdQfqVWG/1wSsYqJvcX6Udz0SPyB0Izc4VNiWWnk8ds65/50CjDCkhoFttsDF17ScSCosdYnCjz5RhZ+89W6WuwUITulZx7O2FD+GJJk+ayTFxh5GUFRuge3ECASV9KC3OWPHG1i7hm1UnKmbeCHaV62XThH0sWIjmBLlRPXAxWNhqY5HZPDmlwQdMUmgMuJ6CT8UqnWjThJEijRNtG4w07WoZINFXUhG1colVZ17xaPFAXKf7PBVVrnZtotdR3g/ldlTeLHDxzHdEldemZXl3WEGA6+5K4wOhYdWqGn+wR5Bf5GMaShrfpWIIU6YTx1FvYIXgP1wrQ+B9GIF0eZwRunohEJc6h70yatbdJQat9q8in5V6V6Yg6D2pyA5KiTxdHGQalHui7uNkrnkZT/Ala3wBZT4xMHwla8p/P0zqTBwk8dmUdLG57lI8W3dAV0SoDpi/IcepSnOG1klsFlS5NUVMmiL+UkSkcXBS7POyltbv94ilwmEctTWZL2LU3yjWe8LpC3l8QaEB7ZXNlyAdo41S97C+/g0yHGuziY9OsZrXtZzZbdxfCzvpTaljgi0cdLdSnV+samuFuTasaV4XXWQHbLG1Vnza/UO99qEb0oLTh+pI5hbSVIURGKnwBR5LSZJ6Vm6t5y8WqwYGcqFHo3YNFNELWT5wCOD1Jintu9ND/tQB5TNo0b7XTA6//KeHaycybx8MvDaPZAWpFJp4HM9ADtyfdi/vhaEj20KRhayQjfWLLvUvCnl8xoyWyXGQCP8mg0iya8pbLtRti37DwzE+p1h05ULccIFHsgNt5BG/qLauNmBat+qH3U0Wq9d6ocNYqzg68Img+MjMW7PpMf1irKk75ZXdgOQgynAdxAufHloozKZUbDBTHzCWVAkAm4IU2hwCb+ojwMwMvll8IaqyzR4Qcatbt3wTs3iI8kMMjCT4N9sYvmjaOnxpuft3m56Gfc0gsfupw2eESSnGvYOUtGyWdyoYC33KBvD41Eq+uj0QjwkY0OH7hzPRrO0rc6RYKUrKYYYN7CXkZDRJe33m/u69+IZoHyD35mOmzGNOySTSAgUWwRQAa5sFIulqpeGaVdo9bRpDrQ6HxwUCdMXjj8Pw9lsgS22k1Zm4N5gRyA==';
 
 class SettingsRepository {
-  static final SettingsRepository _singleton = SettingsRepository._internal()..init();
+  static final SettingsRepository _singleton = SettingsRepository._internal()
+    ..init();
 
   factory SettingsRepository() {
     return _singleton;
@@ -29,9 +31,11 @@ class SettingsRepository {
 
   // The barcode capture process is configured through barcode capture settings
   // which are then applied to the barcode capture instance that manages barcode capture.
-  final BarcodeCaptureSettings _barcodeCaptureSettings = BarcodeCaptureSettings();
+  final BarcodeCaptureSettings _barcodeCaptureSettings =
+      BarcodeCaptureSettings();
 
-  final CameraSettings _cameraSettings = BarcodeCapture.recommendedCameraSettings;
+  final CameraSettings _cameraSettings =
+      BarcodeCapture.recommendedCameraSettings;
 
   late BarcodeCapture _barcodeCapture;
 
@@ -129,11 +133,15 @@ class SettingsRepository {
   }
 
   bool isExtensionEnabled(Symbology symbology, String extension) {
-    return getSymbologySettings(symbology).enabledExtensions.contains(extension);
+    return getSymbologySettings(symbology)
+        .enabledExtensions
+        .contains(extension);
   }
 
-  void setExtensionEnabled(Symbology symbology, String extension, bool enabled) {
-    getSymbologySettings(symbology).setExtensionEnabled(extension, enabled: enabled);
+  void setExtensionEnabled(
+      Symbology symbology, String extension, bool enabled) {
+    getSymbologySettings(symbology)
+        .setExtensionEnabled(extension, enabled: enabled);
     applyBarcodeCaptureSettings();
   }
 
@@ -168,7 +176,8 @@ class SettingsRepository {
     setSymbolCount(settings, minSymbolCount, maxSymbolCount);
   }
 
-  void setSymbolCount(SymbologySettings settings, int minSymbolCount, int maxSymbolCount) {
+  void setSymbolCount(
+      SymbologySettings settings, int minSymbolCount, int maxSymbolCount) {
     List<int> symbolCount = [];
 
     if (minSymbolCount >= maxSymbolCount) {
@@ -196,7 +205,8 @@ class SettingsRepository {
   }
 
   DoubleWithUnit get radiusLocationSize {
-    return DoubleWithUnit(radiusLocationSelectionValue, radiusLocationSelectionUnit);
+    return DoubleWithUnit(
+        radiusLocationSelectionValue, radiusLocationSelectionUnit);
   }
 
   double _radiusLocationSelectionValue = 0;
@@ -221,7 +231,8 @@ class SettingsRepository {
 
   SizingMode rectangularLocationSelectionSizeMode = SizingMode.widthAndHeight;
 
-  DoubleWithUnit _rectangularLocationSelectionWidth = DoubleWithUnit(0, MeasureUnit.dip);
+  DoubleWithUnit _rectangularLocationSelectionWidth =
+      DoubleWithUnit(0, MeasureUnit.dip);
 
   DoubleWithUnit get rectangularLocationSelectionWidth {
     return _rectangularLocationSelectionWidth;
@@ -232,7 +243,8 @@ class SettingsRepository {
   }
 
   set rectangularLocationSelectionWidthValue(double newValue) {
-    _rectangularLocationSelectionWidth = DoubleWithUnit(newValue, rectangularLocationSelectionWidthUnit);
+    _rectangularLocationSelectionWidth =
+        DoubleWithUnit(newValue, rectangularLocationSelectionWidthUnit);
   }
 
   MeasureUnit get rectangularLocationSelectionWidthUnit {
@@ -240,10 +252,12 @@ class SettingsRepository {
   }
 
   set rectangularLocationSelectionWidthUnit(MeasureUnit newUnit) {
-    _rectangularLocationSelectionWidth = DoubleWithUnit(rectangularLocationSelectionWidthValue, newUnit);
+    _rectangularLocationSelectionWidth =
+        DoubleWithUnit(rectangularLocationSelectionWidthValue, newUnit);
   }
 
-  DoubleWithUnit _rectangularLocationSelectionHeight = DoubleWithUnit(0, MeasureUnit.dip);
+  DoubleWithUnit _rectangularLocationSelectionHeight =
+      DoubleWithUnit(0, MeasureUnit.dip);
 
   DoubleWithUnit get rectangularLocationSelectionHeight {
     return _rectangularLocationSelectionHeight;
@@ -254,7 +268,8 @@ class SettingsRepository {
   }
 
   set rectangularLocationSelectionHeightValue(double newValue) {
-    _rectangularLocationSelectionHeight = DoubleWithUnit(newValue, rectangularLocationSelectionHeightUnit);
+    _rectangularLocationSelectionHeight =
+        DoubleWithUnit(newValue, rectangularLocationSelectionHeightUnit);
   }
 
   MeasureUnit get rectangularLocationSelectionHeightUnit {
@@ -262,7 +277,8 @@ class SettingsRepository {
   }
 
   set rectangularLocationSelectionHeightUnit(MeasureUnit newUnit) {
-    _rectangularLocationSelectionHeight = DoubleWithUnit(rectangularLocationSelectionHeightValue, newUnit);
+    _rectangularLocationSelectionHeight =
+        DoubleWithUnit(rectangularLocationSelectionHeightValue, newUnit);
   }
 
   double rectangularLocationSelectionWidthAspect = 0;
@@ -316,7 +332,8 @@ class SettingsRepository {
     dataCaptureView.removeOverlay(_overlay);
     var shouldShowScanAreaGuides = _overlay.shouldShowScanAreaGuides;
     var viewfinder = _overlay.viewfinder;
-    _overlay = BarcodeCaptureOverlay.withBarcodeCaptureForViewWithStyle(barcodeCapture, dataCaptureView, overlayStyle);
+    _overlay = BarcodeCaptureOverlay.withBarcodeCaptureForViewWithStyle(
+        barcodeCapture, dataCaptureView, overlayStyle);
     _overlay.shouldShowScanAreaGuides = shouldShowScanAreaGuides;
     _overlay.viewfinder = viewfinder;
   }
@@ -350,7 +367,8 @@ class SettingsRepository {
     }
 
     _barcodeCaptureSettings.enabledCompositeTypes.add(compositeType);
-    _barcodeCaptureSettings.enableSymbologiesForCompositeTypes(_barcodeCaptureSettings.enabledCompositeTypes);
+    _barcodeCaptureSettings.enableSymbologiesForCompositeTypes(
+        _barcodeCaptureSettings.enabledCompositeTypes);
     applyBarcodeCaptureSettings();
   }
 
@@ -359,12 +377,14 @@ class SettingsRepository {
       _barcodeCaptureSettings.enableSymbology(symbology, false);
     }
     _barcodeCaptureSettings.enabledCompositeTypes.remove(compositeType);
-    _barcodeCaptureSettings.enableSymbologiesForCompositeTypes(_barcodeCaptureSettings.enabledCompositeTypes);
+    _barcodeCaptureSettings.enableSymbologiesForCompositeTypes(
+        _barcodeCaptureSettings.enabledCompositeTypes);
     applyBarcodeCaptureSettings();
   }
 
   bool isCompositeTypeEnabled(CompositeType compositeType) {
-    return _barcodeCaptureSettings.enabledCompositeTypes.contains(compositeType);
+    return _barcodeCaptureSettings.enabledCompositeTypes
+        .contains(compositeType);
   }
 
   // COMPOSITE TYPES - END
@@ -376,8 +396,8 @@ class SettingsRepository {
   }
 
   set scanAreaTopMargin(DoubleWithUnit topMargin) {
-    _dataCaptureView.scanAreaMargins =
-        MarginsWithUnit(scanAreaLeftMargin, topMargin, scanAreaRightMargin, scanAreaBottomMargin);
+    _dataCaptureView.scanAreaMargins = MarginsWithUnit(scanAreaLeftMargin,
+        topMargin, scanAreaRightMargin, scanAreaBottomMargin);
   }
 
   DoubleWithUnit get scanAreaBottomMargin {
@@ -385,8 +405,8 @@ class SettingsRepository {
   }
 
   set scanAreaBottomMargin(DoubleWithUnit bottomMargin) {
-    _dataCaptureView.scanAreaMargins =
-        MarginsWithUnit(scanAreaLeftMargin, scanAreaTopMargin, scanAreaRightMargin, bottomMargin);
+    _dataCaptureView.scanAreaMargins = MarginsWithUnit(scanAreaLeftMargin,
+        scanAreaTopMargin, scanAreaRightMargin, bottomMargin);
   }
 
   DoubleWithUnit get scanAreaLeftMargin {
@@ -394,8 +414,8 @@ class SettingsRepository {
   }
 
   set scanAreaLeftMargin(DoubleWithUnit leftMargin) {
-    _dataCaptureView.scanAreaMargins =
-        MarginsWithUnit(leftMargin, scanAreaTopMargin, scanAreaRightMargin, scanAreaBottomMargin);
+    _dataCaptureView.scanAreaMargins = MarginsWithUnit(leftMargin,
+        scanAreaTopMargin, scanAreaRightMargin, scanAreaBottomMargin);
   }
 
   DoubleWithUnit get scanAreaRightMargin {
@@ -403,8 +423,8 @@ class SettingsRepository {
   }
 
   set scanAreaRightMargin(DoubleWithUnit rightMargin) {
-    _dataCaptureView.scanAreaMargins =
-        MarginsWithUnit(scanAreaLeftMargin, scanAreaTopMargin, rightMargin, scanAreaBottomMargin);
+    _dataCaptureView.scanAreaMargins = MarginsWithUnit(scanAreaLeftMargin,
+        scanAreaTopMargin, rightMargin, scanAreaBottomMargin);
   }
 
   bool get shouldShowScanAreaGuides {
@@ -424,7 +444,8 @@ class SettingsRepository {
   }
 
   set pointOfInterestX(DoubleWithUnit newValue) {
-    _dataCaptureView.pointOfInterest = PointWithUnit(newValue, pointOfInterestY);
+    _dataCaptureView.pointOfInterest =
+        PointWithUnit(newValue, pointOfInterestY);
   }
 
   DoubleWithUnit get pointOfInterestY {
@@ -432,7 +453,8 @@ class SettingsRepository {
   }
 
   set pointOfInterestY(DoubleWithUnit newValue) {
-    _dataCaptureView.pointOfInterest = PointWithUnit(pointOfInterestX, newValue);
+    _dataCaptureView.pointOfInterest =
+        PointWithUnit(pointOfInterestX, newValue);
   }
 
   // POINT OF INTEREST - END
@@ -484,10 +506,12 @@ class SettingsRepository {
   }
 
   final Color laserLineLegacyDefaultEnabledColor =
-      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.legacy).enabledColor;
+      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.legacy)
+          .enabledColor;
 
   final Color laserLineAnimatedDefaultEnabledColor =
-      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.animated).enabledColor;
+      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.animated)
+          .enabledColor;
 
   Color get laserlineEnabledColor {
     return _laserlineViewfinder.enabledColor;
@@ -498,10 +522,12 @@ class SettingsRepository {
   }
 
   final Color laserLineLegacyDefaultDisabledColor =
-      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.legacy).disabledColor;
+      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.legacy)
+          .disabledColor;
 
   final Color laserLineAnimatedDefaultDisabledColor =
-      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.animated).disabledColor;
+      LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.animated)
+          .disabledColor;
 
   Color get laserlineDisabledColor {
     return _laserlineViewfinder.disabledColor;
@@ -524,7 +550,8 @@ class SettingsRepository {
   }
 
   set rectangularViewfinderLineStyle(RectangularViewfinderLineStyle newStyle) {
-    currentViewfinder = RectangularViewfinder.withStyleAndLineStyle(rectangularViewfinderStyle, newStyle);
+    currentViewfinder = RectangularViewfinder.withStyleAndLineStyle(
+        rectangularViewfinderStyle, newStyle);
   }
 
   double get rectangularViewfinderDimming {
@@ -548,7 +575,8 @@ class SettingsRepository {
   }
 
   set rectangularViewfinderAnimationEnabled(bool enabled) {
-    _rectangularViewfinder.animation = enabled ? RectangularViewfinderAnimation(isLooping: false) : null;
+    _rectangularViewfinder.animation =
+        enabled ? RectangularViewfinderAnimation(isLooping: false) : null;
   }
 
   bool get rectangularViewfinderAnimationIsLooping {
@@ -556,7 +584,8 @@ class SettingsRepository {
   }
 
   set rectangularViewfinderAnimationIsLooping(bool isLooping) {
-    _rectangularViewfinder.animation = RectangularViewfinderAnimation(isLooping: isLooping);
+    _rectangularViewfinder.animation =
+        RectangularViewfinderAnimation(isLooping: isLooping);
   }
 
   SizingMode get rectangularViewfinderSizingMode {
@@ -570,26 +599,32 @@ class SettingsRepository {
   void _setRectangularViewfiniderSize(SizingMode mode) {
     switch (mode) {
       case SizingMode.widthAndHeight:
-        _rectangularViewfinder.setSize(SizeWithUnit(rectangularViewfinderWidth, rectangularViewfinderHeight));
+        _rectangularViewfinder.setSize(SizeWithUnit(
+            rectangularViewfinderWidth, rectangularViewfinderHeight));
         break;
       case SizingMode.widthAndAspectRatio:
-        _rectangularViewfinder.setWidthAndAspectRatio(rectangularViewfinderWidth, rectangularViewfinderHeightAspect);
+        _rectangularViewfinder.setWidthAndAspectRatio(
+            rectangularViewfinderWidth, rectangularViewfinderHeightAspect);
         break;
       case SizingMode.heightAndAspectRatio:
-        _rectangularViewfinder.setHeightAndAspectRatio(rectangularViewfinderHeight, rectangularViewfinderWidthAspect);
+        _rectangularViewfinder.setHeightAndAspectRatio(
+            rectangularViewfinderHeight, rectangularViewfinderWidthAspect);
         break;
       case SizingMode.shorterDimensionAndAspectRatio:
         _rectangularViewfinder.setShorterDimensionAndAspectRatio(
-            _rectangularViewfinderShorterDimension, _rectangularViewfinderLongerDimensionAspect);
+            _rectangularViewfinderShorterDimension,
+            _rectangularViewfinderLongerDimensionAspect);
         break;
     }
   }
 
   DoubleWithUnit _rectangularViewfinderWidth =
-      RectangularViewfinder().sizeWithUnitAndAspect.widthAndHeight?.width ?? DoubleWithUnit.zero;
+      RectangularViewfinder().sizeWithUnitAndAspect.widthAndHeight?.width ??
+          DoubleWithUnit.zero;
 
   DoubleWithUnit _rectangularViewfinderHieght =
-      RectangularViewfinder().sizeWithUnitAndAspect.widthAndHeight?.height ?? DoubleWithUnit.zero;
+      RectangularViewfinder().sizeWithUnitAndAspect.widthAndHeight?.height ??
+          DoubleWithUnit.zero;
 
   double _rectangularViewfinderWidthAspect = 0;
   double _rectangularViewfinderHeightAspect = 0;
@@ -776,7 +811,8 @@ class SettingsRepository {
     if (_camera != null) _dataCaptureContext.setFrameSource(_camera!);
 
     // Create new barcode capture mode with the initial settings
-    _barcodeCapture = BarcodeCapture.forContext(_dataCaptureContext, _barcodeCaptureSettings);
+    _barcodeCapture =
+        BarcodeCapture.forContext(_dataCaptureContext, _barcodeCaptureSettings);
 
     // To visualize the on-going barcode capturing process on screen, setup a data capture view that renders the
     // camera preview. The view must be connected to the data capture context.

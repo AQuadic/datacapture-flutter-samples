@@ -19,8 +19,10 @@ class FreezeButton extends StatefulWidget {
 }
 
 class _FreezeButtonState extends State<FreezeButton> {
-  final AssetImage _freezeButtonAsset = AssetImage("assets/images/freeze_enabled.png");
-  final AssetImage _unfreezeButtonAsset = AssetImage("assets/images/freeze_disabled.png");
+  final AssetImage _freezeButtonAsset =
+      AssetImage("assets/images/freeze_enabled.png");
+  final AssetImage _unfreezeButtonAsset =
+      AssetImage("assets/images/freeze_disabled.png");
 
   late AssetImage _buttonAsset;
   var _capturingFrozen = false;
@@ -39,14 +41,16 @@ class _FreezeButtonState extends State<FreezeButton> {
         child: TextButton(
           onPressed: () => _onPressed(context),
           child: Image(image: _buttonAsset),
-          style: ButtonStyle(overlayColor: MaterialStateProperty.all(Colors.transparent)),
+          style: ButtonStyle(
+              overlayColor: MaterialStateProperty.all(Colors.transparent)),
         ));
   }
 
   _onPressed(BuildContext context) {
     setState(() {
       _capturingFrozen = !_capturingFrozen;
-      _buttonAsset = _capturingFrozen ? _unfreezeButtonAsset : _freezeButtonAsset;
+      _buttonAsset =
+          _capturingFrozen ? _unfreezeButtonAsset : _freezeButtonAsset;
       widget.onPressed(_capturingFrozen);
     });
   }

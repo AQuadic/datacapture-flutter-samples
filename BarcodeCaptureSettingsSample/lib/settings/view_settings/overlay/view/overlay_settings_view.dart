@@ -20,7 +20,8 @@ class OverlaySettingsView extends StatefulWidget {
   }
 }
 
-class _OverlaySettingsViewState extends State<OverlaySettingsView> with WidgetsBindingObserver {
+class _OverlaySettingsViewState extends State<OverlaySettingsView>
+    with WidgetsBindingObserver {
   final OverlaySettingsBloc _bloc;
 
   _OverlaySettingsViewState(this._bloc);
@@ -31,7 +32,8 @@ class _OverlaySettingsViewState extends State<OverlaySettingsView> with WidgetsB
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -42,7 +44,8 @@ class _OverlaySettingsViewState extends State<OverlaySettingsView> with WidgetsB
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(children: <Widget>[
                 ListTile(
                   contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),

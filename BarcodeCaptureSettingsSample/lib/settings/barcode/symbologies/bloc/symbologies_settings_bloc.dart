@@ -13,7 +13,8 @@ class SymbologiesSettingsBloc extends Bloc {
   final SettingsRepository _settings = SettingsRepository();
 
   Iterable<SymbologyItem> get symbologies {
-    return Symbology.values.map((symbology) => SymbologyItem(symbology, _settings.isSymbologyEnabled(symbology)));
+    return Symbology.values.map((symbology) =>
+        SymbologyItem(symbology, _settings.isSymbologyEnabled(symbology)));
   }
 
   void enableAll() {

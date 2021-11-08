@@ -20,7 +20,8 @@ class SymbologiesSettingsView extends StatefulWidget {
   }
 }
 
-class _SymbologiesSettingsViewState extends State<SymbologiesSettingsView> with WidgetsBindingObserver {
+class _SymbologiesSettingsViewState extends State<SymbologiesSettingsView>
+    with WidgetsBindingObserver {
   final SymbologiesSettingsBloc _bloc;
   late Iterable<SymbologyItem> _symbologies;
 
@@ -33,7 +34,8 @@ class _SymbologiesSettingsViewState extends State<SymbologiesSettingsView> with 
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -41,25 +43,27 @@ class _SymbologiesSettingsViewState extends State<SymbologiesSettingsView> with 
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: <Widget>[
-              ElevatedButton(
-                  onPressed: () => {
-                        setState(() {
-                          _bloc.enableAll();
-                        })
-                      },
-                  child: Text("Enable All")),
-              ElevatedButton(
-                  onPressed: () => {
-                        setState(() {
-                          _bloc.disableAll();
-                        })
-                      },
-                  child: Text("Disable All"),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.red),
-                  )),
-            ]),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  ElevatedButton(
+                      onPressed: () => {
+                            setState(() {
+                              _bloc.enableAll();
+                            })
+                          },
+                      child: Text("Enable All")),
+                  ElevatedButton(
+                      onPressed: () => {
+                            setState(() {
+                              _bloc.disableAll();
+                            })
+                          },
+                      child: Text("Disable All"),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red),
+                      )),
+                ]),
             Expanded(
               child: ListView.separated(
                 padding: const EdgeInsets.all(5),
@@ -103,7 +107,10 @@ class _SymbologiesSettingsViewState extends State<SymbologiesSettingsView> with 
 
   void _openSymbologyDetails(BuildContext context, SymbologyItem item) async {
     Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SymbologyDetailsSettingsView(symbology: item.symbology)))
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    SymbologyDetailsSettingsView(symbology: item.symbology)))
         .then((value) => {
               this.setState(() {
                 _symbologies = _bloc.symbologies;

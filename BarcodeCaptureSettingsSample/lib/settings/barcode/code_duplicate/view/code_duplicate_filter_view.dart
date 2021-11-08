@@ -18,7 +18,8 @@ class CodeDuplicateFilterSettingsView extends StatefulWidget {
   }
 }
 
-class _CodeDuplicateFilterSettingsViewState extends State<CodeDuplicateFilterSettingsView> with WidgetsBindingObserver {
+class _CodeDuplicateFilterSettingsViewState
+    extends State<CodeDuplicateFilterSettingsView> with WidgetsBindingObserver {
   final CodeDuplicateFilterBloc _bloc;
   late TextEditingController _valueEditingController;
 
@@ -28,7 +29,8 @@ class _CodeDuplicateFilterSettingsViewState extends State<CodeDuplicateFilterSet
   void initState() {
     super.initState();
 
-    _valueEditingController = TextEditingController(text: _bloc.codeDuplicateFilter.toString());
+    _valueEditingController =
+        TextEditingController(text: _bloc.codeDuplicateFilter.toString());
     _valueEditingController.addListener(() {
       var newValue = int.tryParse(_valueEditingController.text);
       if (newValue != null) {
@@ -43,7 +45,8 @@ class _CodeDuplicateFilterSettingsViewState extends State<CodeDuplicateFilterSet
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -56,7 +59,8 @@ class _CodeDuplicateFilterSettingsViewState extends State<CodeDuplicateFilterSet
                 Card(
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
                   child: ListTile(
                     contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
                     title: Text('Code Duplicate Filter (s)'),
@@ -65,7 +69,8 @@ class _CodeDuplicateFilterSettingsViewState extends State<CodeDuplicateFilterSet
                       width: 100,
                       height: 60,
                       child: TextField(
-                        keyboardType: TextInputType.numberWithOptions(decimal: false, signed: false),
+                        keyboardType: TextInputType.numberWithOptions(
+                            decimal: false, signed: false),
                         controller: _valueEditingController,
                         autofocus: true,
                       ),

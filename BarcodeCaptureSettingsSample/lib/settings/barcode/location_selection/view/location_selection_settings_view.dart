@@ -22,7 +22,8 @@ class LocationSelectionSettingsView extends StatefulWidget {
   }
 }
 
-class _LocationSelectionSettingsViewState extends State<LocationSelectionSettingsView> with WidgetsBindingObserver {
+class _LocationSelectionSettingsViewState
+    extends State<LocationSelectionSettingsView> with WidgetsBindingObserver {
   final LocationSelectionSettingsBloc _bloc;
   late TextEditingController _heightAspectEditingController;
   late TextEditingController _widthAspectEditingController;
@@ -33,18 +34,21 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
   void initState() {
     super.initState();
 
-    _heightAspectEditingController =
-        TextEditingController(text: _bloc.rectangularLocationSelectionHeightAspect.toStringAsFixed(2));
+    _heightAspectEditingController = TextEditingController(
+        text:
+            _bloc.rectangularLocationSelectionHeightAspect.toStringAsFixed(2));
     _heightAspectEditingController.addListener(() {
       var newValue = double.tryParse(_heightAspectEditingController.text);
-      if (newValue != null) _bloc.rectangularLocationSelectionHeightAspect = newValue;
+      if (newValue != null)
+        _bloc.rectangularLocationSelectionHeightAspect = newValue;
     });
 
-    _widthAspectEditingController =
-        TextEditingController(text: _bloc.rectangularLocationSelectionWidthAspect.toStringAsFixed(2));
+    _widthAspectEditingController = TextEditingController(
+        text: _bloc.rectangularLocationSelectionWidthAspect.toStringAsFixed(2));
     _widthAspectEditingController.addListener(() {
       var newValue = double.tryParse(_widthAspectEditingController.text);
-      if (newValue != null) _bloc.rectangularLocationSelectionWidthAspect = newValue;
+      if (newValue != null)
+        _bloc.rectangularLocationSelectionWidthAspect = newValue;
     });
   }
 
@@ -63,7 +67,8 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
         appBar: AppBar(
           title: GestureDetector(
             child: Text(widget.title),
-            onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+            onDoubleTap: () =>
+                Navigator.of(context).popUntil((route) => route.isFirst),
           ),
         ),
         body: SafeArea(
@@ -74,7 +79,8 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(children: <Widget>[
                 ListTile(
                   contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 4.0, 0),
@@ -92,7 +98,8 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(
                 children: _getSelectedLocationSelectionTypeView(),
               ),
@@ -123,7 +130,11 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
         ),
         trailing: Text(sizeText),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(_bloc.radiusSizeBloc)))
+          Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          DoubleWithUnitView(_bloc.radiusSizeBloc)))
               .then((value) => {
                     setState(() {
                       sizeText = _bloc.radiusLocationSizeDisplayValue;
@@ -205,10 +216,14 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
           trailing: Text(widthText),
           onTap: () {
             Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(_bloc.rectangularWidthBloc)))
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DoubleWithUnitView(_bloc.rectangularWidthBloc)))
                 .then((value) => {
                       setState(() {
-                        widthText = _bloc.rectangularLocationSelectionWidthDisplayValue;
+                        widthText =
+                            _bloc.rectangularLocationSelectionWidthDisplayValue;
                       })
                     });
           },
@@ -223,10 +238,14 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
           trailing: Text(heightText),
           onTap: () {
             Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(_bloc.rectangularHeightBloc)))
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DoubleWithUnitView(_bloc.rectangularHeightBloc)))
                 .then((value) => {
                       setState(() {
-                        heightText = _bloc.rectangularLocationSelectionHeightDisplayValue;
+                        heightText = _bloc
+                            .rectangularLocationSelectionHeightDisplayValue;
                       })
                     });
           },
@@ -248,10 +267,14 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
           trailing: Text(widthText),
           onTap: () {
             Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(_bloc.rectangularWidthBloc)))
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DoubleWithUnitView(_bloc.rectangularWidthBloc)))
                 .then((value) => {
                       setState(() {
-                        widthText = _bloc.rectangularLocationSelectionWidthDisplayValue;
+                        widthText =
+                            _bloc.rectangularLocationSelectionWidthDisplayValue;
                       })
                     });
           },
@@ -290,10 +313,14 @@ class _LocationSelectionSettingsViewState extends State<LocationSelectionSetting
           trailing: Text(heightText),
           onTap: () {
             Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => DoubleWithUnitView(_bloc.rectangularWidthBloc)))
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            DoubleWithUnitView(_bloc.rectangularWidthBloc)))
                 .then((value) => {
                       setState(() {
-                        heightText = _bloc.rectangularLocationSelectionHeightDisplayValue;
+                        heightText = _bloc
+                            .rectangularLocationSelectionHeightDisplayValue;
                       })
                     });
           },

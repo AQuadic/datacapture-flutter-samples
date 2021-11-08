@@ -13,7 +13,8 @@ class ProductBubble extends StatefulWidget {
   final String barcodeData;
   final BubbleViewState viewState;
 
-  const ProductBubble(this.barcodeData, this.viewState, {Key? key}) : super(key: key);
+  const ProductBubble(this.barcodeData, this.viewState, {Key? key})
+      : super(key: key);
 
   @override
   ProductBubbleState createState() => ProductBubbleState();
@@ -37,13 +38,18 @@ class ProductBubbleState extends State<ProductBubble> {
       children: [
         Text("Report stock count",
             textDirection: TextDirection.ltr,
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black)),
+            style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: Colors.black)),
         Text("Shelf: 4 Back room: 8",
-            textDirection: TextDirection.ltr, style: TextStyle(fontSize: 10, color: Colors.black))
+            textDirection: TextDirection.ltr,
+            style: TextStyle(fontSize: 10, color: Colors.black))
       ],
     );
-    _barcodeData =
-        Text(widget.barcodeData, textDirection: TextDirection.ltr, style: TextStyle(fontSize: 12, color: Colors.black));
+    _barcodeData = Text(widget.barcodeData,
+        textDirection: TextDirection.ltr,
+        style: TextStyle(fontSize: 12, color: Colors.black));
   }
 
   @override
@@ -51,20 +57,26 @@ class ProductBubbleState extends State<ProductBubble> {
     return Container(
       width: 180,
       height: 60,
-      decoration: BoxDecoration(color: const Color(0xFFFFFFEE), borderRadius: BorderRadius.circular(30)),
+      decoration: BoxDecoration(
+          color: const Color(0xFFFFFFEE),
+          borderRadius: BorderRadius.circular(30)),
       child: Row(
         textDirection: TextDirection.ltr,
         children: [
           Container(
             width: 60,
             height: 60,
-            decoration: BoxDecoration(color: const Color(0xFF58B5C2), borderRadius: BorderRadius.circular(30)),
+            decoration: BoxDecoration(
+                color: const Color(0xFF58B5C2),
+                borderRadius: BorderRadius.circular(30)),
             child: Image(image: AssetImage("assets/images/stock_count.png")),
           ),
           Expanded(
               child: Center(
             // The text content of the bubble, switching between stock information and the barcode data.
-            child: widget.viewState.viewType == BubbleType.BarcodeData ? _barcodeData : _stockInfo,
+            child: widget.viewState.viewType == BubbleType.BarcodeData
+                ? _barcodeData
+                : _stockInfo,
           ))
         ],
       ),

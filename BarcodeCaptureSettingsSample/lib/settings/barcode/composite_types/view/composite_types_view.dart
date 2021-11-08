@@ -20,7 +20,8 @@ class CompositeTypesSettingsView extends StatefulWidget {
   }
 }
 
-class _CompositeTypesSettingsViewState extends State<CompositeTypesSettingsView> with WidgetsBindingObserver {
+class _CompositeTypesSettingsViewState extends State<CompositeTypesSettingsView>
+    with WidgetsBindingObserver {
   final CompositeTypesBloc _bloc;
 
   _CompositeTypesSettingsViewState(this._bloc);
@@ -31,7 +32,8 @@ class _CompositeTypesSettingsViewState extends State<CompositeTypesSettingsView>
       appBar: AppBar(
         title: GestureDetector(
           child: Text(widget.title),
-          onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+          onDoubleTap: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
         ),
       ),
       body: SafeArea(
@@ -50,7 +52,8 @@ class _CompositeTypesSettingsViewState extends State<CompositeTypesSettingsView>
           },
           itemCount: _bloc.compositeTypes.length,
           itemBuilder: (BuildContext context, int index) {
-            return _getCompositeTypeListItem(_bloc.compositeTypes.elementAt(index));
+            return _getCompositeTypeListItem(
+                _bloc.compositeTypes.elementAt(index));
           },
         ),
       ),

@@ -24,9 +24,11 @@ class BarcodeCaptureSplitBloc extends Bloc implements BarcodeCaptureListener {
 
   Timer? _timer;
 
-  StreamController<List<Barcode>> _capturedBarcodesStreamController = StreamController();
+  StreamController<List<Barcode>> _capturedBarcodesStreamController =
+      StreamController();
 
-  Stream<List<Barcode>> get capturedBarcodes => _capturedBarcodesStreamController.stream;
+  Stream<List<Barcode>> get capturedBarcodes =>
+      _capturedBarcodesStreamController.stream;
 
   StreamController<bool> _isCapturingStreamController = StreamController();
 
@@ -47,7 +49,8 @@ class BarcodeCaptureSplitBloc extends Bloc implements BarcodeCaptureListener {
     _captureView = DataCaptureView.forContext(_captureContext);
 
     // Create new barcode capture mode with the settings from above.
-    _barcodeCapture = BarcodeCapture.forContext(_captureContext, barcodeCaptureSettings)
+    _barcodeCapture = BarcodeCapture.forContext(
+        _captureContext, barcodeCaptureSettings)
       // Register self as a listener to get informed whenever a new barcode gets recognized.
       ..addListener(this);
 
@@ -55,11 +58,13 @@ class BarcodeCaptureSplitBloc extends Bloc implements BarcodeCaptureListener {
     // the video preview. This is optional, but recommended for better visual feedback.
     var overlay = BarcodeCaptureOverlay.withBarcodeCaptureForViewWithStyle(
         _barcodeCapture, _captureView, BarcodeCaptureOverlayStyle.frame)
-      ..viewfinder = LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.animated);
+      ..viewfinder =
+          LaserlineViewfinder.withStyle(LaserlineViewfinderStyle.animated);
 
     // Adjust the overlay's barcode highlighting to match the new viewfinder styles and improve the visibility of feedback.
     // With 6.10 we will introduce this visual treatment as a new style for the overlay.
-    overlay.brush = Brush(Color.fromARGB(0, 0, 0, 0), Color.fromARGB(255, 255, 255, 255), 3);
+    overlay.brush = Brush(
+        Color.fromARGB(0, 0, 0, 0), Color.fromARGB(255, 255, 255, 255), 3);
 
     _captureView.addOverlay(overlay);
 
@@ -81,19 +86,41 @@ class BarcodeCaptureSplitBloc extends Bloc implements BarcodeCaptureListener {
     // sample we enable a very generous set of symbologies. In your own app ensure that you only enable the
     // symbologies that your app requires as every additional enabled symbology has an impact on processing times.
     captureSettings.enableSymbologies({
-      Symbology.ean8,
       Symbology.ean13Upca,
       Symbology.upce,
+      Symbology.ean8,
+      Symbology.code39,
+      Symbology.code93,
+      Symbology.code128,
+      Symbology.code11,
+      Symbology.code25,
+      Symbology.codabar,
+      Symbology.interleavedTwoOfFive,
+      Symbology.msiPlessey,
       Symbology.qr,
       Symbology.dataMatrix,
-      Symbology.code39,
-      Symbology.code128,
-      Symbology.interleavedTwoOfFive
+      Symbology.aztec,
+      Symbology.maxiCode,
+      Symbology.dotCode,
+      Symbology.kix,
+      Symbology.rm4scc,
+      Symbology.gs1Databar,
+      Symbology.gs1DatabarExpanded,
+      Symbology.gs1DatabarLimited,
+      Symbology.pdf417,
+      Symbology.microPdf417,
+      Symbology.microQr,
+      Symbology.code32,
+      Symbology.lapa4sc,
+      Symbology.iataTwoOfFive,
+      Symbology.matrixTwoOfFive,
+      Symbology.uspsIntelligentMail
     });
 
     // In order not to pick up barcodes outside of the view finder,
     // restrict the code location selection to match the laser line's center.
-    captureSettings.locationSelection = RadiusLocationSelection(DoubleWithUnit(0, MeasureUnit.fraction));
+    captureSettings.locationSelection =
+        RadiusLocationSelection(DoubleWithUnit(0, MeasureUnit.fraction));
 
     // Setting the code duplicate filter to one thousand milliseconds means that the scanner
     // won't report the same code as recognized for one second once it's recognized.
@@ -129,7 +156,8 @@ class BarcodeCaptureSplitBloc extends Bloc implements BarcodeCaptureListener {
   }
 
   @override
-  void didUpdateSession(BarcodeCapture barcodeCapture, BarcodeCaptureSession session) {
+  void didUpdateSession(
+      BarcodeCapture barcodeCapture, BarcodeCaptureSession session) {
     if (session.newlyRecognizedBarcodes.isEmpty) return;
 
     _storeAndNotifyNewBarcode(session.newlyRecognizedBarcodes.first);

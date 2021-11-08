@@ -16,16 +16,20 @@ class OverlaySettingsBloc extends Bloc {
   final SettingsRepository _settings = SettingsRepository();
   final Brush _redBrush = Brush(Colors.transparent, Colors.red, 1);
   final Brush _greenBrush = Brush(Colors.transparent, Colors.green, 1);
-  final OverlayStyleItem _legacyStyleItem = OverlayStyleItem(BarcodeCaptureOverlayStyle.legacy, 'Legacy');
-  final OverlayStyleItem _frameStyleItem = OverlayStyleItem(BarcodeCaptureOverlayStyle.frame, 'Frame');
+  final OverlayStyleItem _legacyStyleItem =
+      OverlayStyleItem(BarcodeCaptureOverlayStyle.legacy, 'Legacy');
+  final OverlayStyleItem _frameStyleItem =
+      OverlayStyleItem(BarcodeCaptureOverlayStyle.frame, 'Frame');
 
   late BrushItem _selectedBrush;
   late OverlayStyleItem _selectedStyle;
 
   OverlaySettingsBloc() {
-    if (_settings.currentBrush.strokeColor.jsonValue == _redBrush.strokeColor.jsonValue) {
+    if (_settings.currentBrush.strokeColor.jsonValue ==
+        _redBrush.strokeColor.jsonValue) {
       _selectedBrush = BrushItem('Red', _redBrush);
-    } else if (_settings.currentBrush.strokeColor.jsonValue == _greenBrush.strokeColor.jsonValue) {
+    } else if (_settings.currentBrush.strokeColor.jsonValue ==
+        _greenBrush.strokeColor.jsonValue) {
       _selectedBrush = BrushItem('Green', _greenBrush);
     } else {
       _selectedBrush = BrushItem('Default', _settings.defaultBrush);

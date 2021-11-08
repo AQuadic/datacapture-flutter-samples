@@ -40,17 +40,27 @@ class LaserlineViewfinderBloc extends Bloc {
   List<ColorItem> get availableEnabledColors {
     if (_settings.laserlineStyle == LaserlineViewfinderStyle.animated) {
       return [
-        ColorItem('Default', _settings.laserLineAnimatedDefaultEnabledColor,
-            _settings.laserlineEnabledColor.value == _settings.laserLineAnimatedDefaultEnabledColor.value),
-        ColorItem('Blue', blueColor, _settings.laserlineEnabledColor.value == blueColor.value),
-        ColorItem('Red', redColor, _settings.laserlineEnabledColor.value == redColor.value),
+        ColorItem(
+            'Default',
+            _settings.laserLineAnimatedDefaultEnabledColor,
+            _settings.laserlineEnabledColor.value ==
+                _settings.laserLineAnimatedDefaultEnabledColor.value),
+        ColorItem('Blue', blueColor,
+            _settings.laserlineEnabledColor.value == blueColor.value),
+        ColorItem('Red', redColor,
+            _settings.laserlineEnabledColor.value == redColor.value),
       ];
     } else {
       return [
-        ColorItem('Default', _settings.laserLineLegacyDefaultEnabledColor,
-            _settings.laserlineEnabledColor.value == _settings.laserLineLegacyDefaultEnabledColor.value),
-        ColorItem('Red', redColor, _settings.laserlineEnabledColor.value == redColor.value),
-        ColorItem('White', whiteColor, _settings.laserlineEnabledColor.value == whiteColor.value),
+        ColorItem(
+            'Default',
+            _settings.laserLineLegacyDefaultEnabledColor,
+            _settings.laserlineEnabledColor.value ==
+                _settings.laserLineLegacyDefaultEnabledColor.value),
+        ColorItem('Red', redColor,
+            _settings.laserlineEnabledColor.value == redColor.value),
+        ColorItem('White', whiteColor,
+            _settings.laserlineEnabledColor.value == whiteColor.value),
       ];
     }
   }
@@ -66,24 +76,35 @@ class LaserlineViewfinderBloc extends Bloc {
   List<ColorItem> get availableDisabledColors {
     if (_settings.laserlineStyle == LaserlineViewfinderStyle.animated) {
       return [
-        ColorItem('Default', _settings.laserLineAnimatedDefaultDisabledColor,
-            _settings.laserlineDisabledColor.value == _settings.laserLineAnimatedDefaultDisabledColor.value),
-        ColorItem('Blue', blueColor, _settings.laserlineDisabledColor.value == blueColor.value),
-        ColorItem('Red', redColor, _settings.laserlineDisabledColor.value == redColor.value),
+        ColorItem(
+            'Default',
+            _settings.laserLineAnimatedDefaultDisabledColor,
+            _settings.laserlineDisabledColor.value ==
+                _settings.laserLineAnimatedDefaultDisabledColor.value),
+        ColorItem('Blue', blueColor,
+            _settings.laserlineDisabledColor.value == blueColor.value),
+        ColorItem('Red', redColor,
+            _settings.laserlineDisabledColor.value == redColor.value),
       ];
     } else {
       return [
-        ColorItem('Default', _settings.laserLineLegacyDefaultDisabledColor,
-            _settings.laserlineDisabledColor.value == _settings.laserLineLegacyDefaultDisabledColor.value),
-        ColorItem('Blue', blueColor, _settings.laserlineDisabledColor.value == blueColor.value),
-        ColorItem('Red', redColor, _settings.laserlineDisabledColor.value == redColor.value),
+        ColorItem(
+            'Default',
+            _settings.laserLineLegacyDefaultDisabledColor,
+            _settings.laserlineDisabledColor.value ==
+                _settings.laserLineLegacyDefaultDisabledColor.value),
+        ColorItem('Blue', blueColor,
+            _settings.laserlineDisabledColor.value == blueColor.value),
+        ColorItem('Red', redColor,
+            _settings.laserlineDisabledColor.value == redColor.value),
       ];
     }
   }
 
   ColorItem get currentDisabledColor {
     return availableDisabledColors.firstWhere((element) => element.isSelected,
-        orElse: () => ColorItem('Default', _settings.laserlineDisabledColor, true));
+        orElse: () =>
+            ColorItem('Default', _settings.laserlineDisabledColor, true));
   }
 
   set currentDisabledColor(ColorItem newColor) {

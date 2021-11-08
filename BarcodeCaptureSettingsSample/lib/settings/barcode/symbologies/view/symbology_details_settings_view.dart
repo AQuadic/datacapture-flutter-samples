@@ -12,15 +12,18 @@ import 'package:scandit_flutter_datacapture_barcode/scandit_flutter_datacapture_
 class SymbologyDetailsSettingsView extends StatefulWidget {
   final Symbology symbology;
 
-  SymbologyDetailsSettingsView({Key? key, required this.symbology}) : super(key: key);
+  SymbologyDetailsSettingsView({Key? key, required this.symbology})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _SymbologyDetailsSettingsViewState(SymbologyDetailsSettingsBloc(symbology));
+    return _SymbologyDetailsSettingsViewState(
+        SymbologyDetailsSettingsBloc(symbology));
   }
 }
 
-class _SymbologyDetailsSettingsViewState extends State<SymbologyDetailsSettingsView> with WidgetsBindingObserver {
+class _SymbologyDetailsSettingsViewState
+    extends State<SymbologyDetailsSettingsView> with WidgetsBindingObserver {
   final SymbologyDetailsSettingsBloc _bloc;
 
   _SymbologyDetailsSettingsViewState(this._bloc);
@@ -31,7 +34,8 @@ class _SymbologyDetailsSettingsViewState extends State<SymbologyDetailsSettingsV
         appBar: AppBar(
           title: GestureDetector(
             child: Text(_bloc.title),
-            onDoubleTap: () => Navigator.of(context).popUntil((route) => route.isFirst),
+            onDoubleTap: () =>
+                Navigator.of(context).popUntil((route) => route.isFirst),
           ),
         ),
         body: SafeArea(
@@ -42,7 +46,8 @@ class _SymbologyDetailsSettingsViewState extends State<SymbologyDetailsSettingsV
             Card(
               elevation: 4.0,
               margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(children: <Widget>[
                 SwitchListTile(
                   contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
@@ -64,7 +69,8 @@ class _SymbologyDetailsSettingsViewState extends State<SymbologyDetailsSettingsV
               child: Card(
                 elevation: 4.0,
                 margin: const EdgeInsets.fromLTRB(0, 4.0, 4.0, 0),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0)),
                 child: Column(children: <Widget>[
                   SwitchListTile(
                     contentPadding: const EdgeInsets.fromLTRB(12.0, 0, 12.0, 0),
@@ -148,7 +154,8 @@ class _SymbologyDetailsSettingsViewState extends State<SymbologyDetailsSettingsV
                       },
                       itemCount: _bloc.extensions.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return _getExtensionItem(_bloc.extensions.elementAt(index));
+                        return _getExtensionItem(
+                            _bloc.extensions.elementAt(index));
                       }),
                 )),
           ],
